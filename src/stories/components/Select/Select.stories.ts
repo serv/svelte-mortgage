@@ -18,18 +18,19 @@ WithName.args = {
 };
 
 export const WithSelectOptions = Template.bind({});
+const selectOptions: { value: string; display: string }[] = [
+  {
+    value: '%',
+    display: '%'
+  },
+  {
+    value: '$',
+    display: '$'
+  }
+];
 WithSelectOptions.args = {
   options: {
     name: 'someName'
   },
-  selectOptions: [
-    {
-      value: '%',
-      display: '%'
-    },
-    {
-      value: '$',
-      display: '$'
-    }
-  ]
+  selectOptions
 };
