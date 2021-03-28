@@ -53,3 +53,11 @@ WithValueType.args = {
   subtext: 'This is the total mortgage value',
   valueType: 'currency'
 };
+
+export const WithSuffix = Template.bind({});
+WithSuffix.args = {
+  suffix: '%',
+  label: 'Down Payment Amount',
+  subtext: 'The down payment amount in percentage',
+  valueType: 'number'
+};
