@@ -6,27 +6,36 @@
   export let label;
   export let subtext;
   export let valueType;
+  export let suffix;
   prefix = prefix ? prefix : null;
   label = label ? label : null;
   subtext = subtext ? subtext : null;
+  suffix = suffix ? suffix : null;
   valueType = valueType ? validateValueType(valueType) : null;
 
-  const defaultInputClass =
+  let inputClass =
     'w-full p-1.5 transition-all focus:outline-none focus:ring focus:border-blue-300';
-  const inputClass = prefix
-    ? defaultInputClass + ' rounded-r'
-    : defaultInputClass + ' rounded';
 
-  let inputValue;
+  if (prefix && suffix) {
+    // Do not round border.
+  } else if (prefix) {
+    inputClass += ' rounded-r';
+  } else if (suffix) {
+    inputClass += ' rounded-l';
+  } else {
+    inputClass += ' rounded';
+  }
 
   // currency is the only supported valueType.
   // undefined and null are acceptable values.
   function validateValueType(aValueType) {
+    const VALID_VALUE_TYPES = ['currency', 'number'];
+
     if (aValueType === undefined || aValueType === null) {
       return aValueType;
     }
 
-    if (aValueType !== 'currency') {
+    if (VALID_VALUE_TYPES.indexOf(aValueType) < 0) {
       throw new Error('invalid valueType prop value');
     }
 
@@ -56,20 +65,11 @@
           maximumFractionDigits: 2
         });
       };
+    } else if (valueType === 'number') {
     } else {
       return null;
     }
   };
-
-  function validate(aInputValue, aInputType) {
-    if (aInputType === 'currency') {
-      if (isNaN(aInputValue)) {
-        return ['The input value is invalid current value'];
-      } else {
-        return [];
-      }
-    }
-  }
 </script>
 
 <div class="text-field flex flex-col">
@@ -93,6 +93,11 @@
       }}
       present={presentInput(valueType)}
     />
+    {#if suffix}
+      <div class="border-l px-3 pt-1.5">
+        {suffix}
+      </div>
+    {/if}
   </div>
   {#if subtext}
     <div class="mt-1 text-sm text-gray-600">
