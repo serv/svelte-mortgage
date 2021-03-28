@@ -7,6 +7,10 @@
   export let shouldTick;
   present = present ? present : (v) => v;
 
+  if (options && options.value) {
+    value = options.value;
+  }
+
   value = present(value);
 
   async function handleInput(event) {

@@ -61,3 +61,12 @@ WithSuffix.args = {
   subtext: 'The down payment amount in percentage',
   valueType: 'number'
 };
+
+export const WithReadOnly = Template.bind({});
+WithReadOnly.args = {
+  label: 'Annual Percentage Rate (APR)',
+  options: {
+    readonly: true,
+    value: 2.55
+  }
+};
