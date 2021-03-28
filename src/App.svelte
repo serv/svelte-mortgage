@@ -8,7 +8,5 @@
 </main>
 
 <style global>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+  @import "globals.css";
 </style>
