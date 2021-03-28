@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import { tick } from 'svelte';
 
   export let options;
@@ -22,4 +22,4 @@
   }
 </script>
 
-<input {...options} on:input|self={handleInput} bind:value={value} >
+<input {...options} on:input|self={handleInput} bind:value />

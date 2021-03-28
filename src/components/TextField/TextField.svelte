@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import Input from './Input.svelte';
 
   export let options;
@@ -11,8 +11,11 @@
   subtext = subtext ? subtext : null;
   valueType = valueType ? validateValueType(valueType) : null;
 
-  const defaultInputClass = "w-full p-1.5 transition-all focus:outline-none focus:ring focus:border-blue-300";
-  const inputClass = prefix ? defaultInputClass + ' rounded-r' : defaultInputClass + ' rounded';
+  const defaultInputClass =
+    'w-full p-1.5 transition-all focus:outline-none focus:ring focus:border-blue-300';
+  const inputClass = prefix
+    ? defaultInputClass + ' rounded-r'
+    : defaultInputClass + ' rounded';
 
   let inputValue;
 
@@ -34,7 +37,7 @@
     const MAX_FLOAT = 1000000000;
 
     if (valueType === 'currency') {
-      return function(currentValue, event) {
+      return function (currentValue, event) {
         if (event && !Number.isInteger(parseInt(event.data))) {
           return 0;
         }
@@ -43,18 +46,20 @@
           return;
         }
 
-        currentValue = Number.parseFloat(currentValue.replace(/\D/g,''));
+        currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
 
         if (currentValue > MAX_FLOAT) {
           return 0;
         }
 
-        return Number.parseFloat(currentValue).toLocaleString('en-US', { maximumFractionDigits: 2 })
-      }
+        return Number.parseFloat(currentValue).toLocaleString('en-US', {
+          maximumFractionDigits: 2
+        });
+      };
     } else {
       return null;
     }
-  }
+  };
 
   function validate(aInputValue, aInputType) {
     if (aInputType === 'currency') {
@@ -79,11 +84,18 @@
         {prefix}
       </div>
     {/if}
-    <Input options={{ type: 'text', id: 'textFieldInput', class: inputClass, ...options}}
-      present={presentInput(valueType)} />
+    <Input
+      options={{
+        type: 'text',
+        id: 'textFieldInput',
+        class: inputClass,
+        ...options
+      }}
+      present={presentInput(valueType)}
+    />
   </div>
   {#if subtext}
-    <div class='mt-1 text-sm text-gray-600'>
+    <div class="mt-1 text-sm text-gray-600">
       {subtext}
     </div>
   {/if}
