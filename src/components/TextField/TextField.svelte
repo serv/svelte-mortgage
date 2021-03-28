@@ -1,4 +1,6 @@
 <script lang='ts'>
+  import Input from './Input.svelte';
+
   export let options;
   export let prefix;
   export let label;
@@ -8,7 +10,6 @@
   label = label ? label : null;
   subtext = subtext ? subtext : null;
   valueType = valueType ? validateValueType(valueType) : null;
-  console.log(valueType)
 
   const defaultInputClass = "w-full p-1.5 transition-all focus:outline-none focus:ring focus:border-blue-300";
   const inputClass = prefix ? defaultInputClass + ' rounded-r' : defaultInputClass + ' rounded';
