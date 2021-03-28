@@ -66,6 +66,8 @@
         });
       };
     } else if (valueType === 'number') {
+      // TODO: support number type
+      return null;
     } else {
       return null;
     }
