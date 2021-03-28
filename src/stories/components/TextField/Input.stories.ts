@@ -17,6 +17,17 @@ WithValue.args = {
 
 export const WithPresent = Template.bind({});
 WithPresent.args = {
-  value: 'SomeValue',
+  value: 'DeepValue',
   present: (v) => v.toUpperCase()
+};
+
+export const WithOptions = Template.bind({});
+WithOptions.args = {
+  value: 'DeepValue',
+  present: (v) => v.toUpperCase(),
+  options: {
+    type: 'text',
+    id: 'textFieldInput',
+    class: 'border border-red-300 rounded'
+  }
 };

@@ -30,16 +30,29 @@
     return aValueType;
   }
 
-  function handleInputValue(aInputValue, aValueType) {
+  let presentInput = function presentInput(aInputValue) {
+    const MAX_FLOAT = 1000000000;
+
     if (valueType === 'currency') {
-      if (validate(aInputValue, 'currency').length < 1) {
-        console.log(aInputValue.toLocaleString('en-US', {maximumFractionDigits:2}))
-        inputValue = aInputValue;
-      } else {
-        // TODO: Show error message
+      return function(currentValue, event) {
+        if (event && !Number.isInteger(parseInt(event.data))) {
+          return 0;
+        }
+
+        if (!currentValue) {
+          return;
+        }
+
+        currentValue = Number.parseFloat(currentValue.replace(/\D/g,''));
+
+        if (currentValue > MAX_FLOAT) {
+          return 0;
+        }
+
+        return Number.parseFloat(currentValue).toLocaleString('en-US', { maximumFractionDigits: 2 })
       }
     } else {
-      return aInputValue;
+      return null;
     }
   }
 
@@ -66,9 +79,8 @@
         {prefix}
       </div>
     {/if}
-    <input type='text' id='textFieldInput' {...options}
-      on:input={handleInputValue(inputValue, valueType)}
-      class={inputClass} bind:value={inputValue} />
+    <Input options={{ type: 'text', id: 'textFieldInput', class: inputClass, ...options}}
+      present={presentInput(valueType)} />
   </div>
   {#if subtext}
     <div class='mt-1 text-sm text-gray-600'>
