@@ -55,4 +55,4 @@
   ];
 </script>
 
-<Select selectOptions={months} />
+<Select label="Month" selectOptions={months} />
