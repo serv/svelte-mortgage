@@ -29,7 +29,7 @@
   // currency is the only supported valueType.
   // undefined and null are acceptable values.
   function validateValueType(aValueType) {
-    const VALID_VALUE_TYPES = ['currency', 'number'];
+    const VALID_VALUE_TYPES = ['currency', 'number', 'year'];
 
     if (aValueType === undefined || aValueType === null) {
       return aValueType;
@@ -66,8 +66,45 @@
         });
       };
     } else if (valueType === 'number') {
-      // TODO: support number type
-      return null;
+      return function (currentValue, event) {
+        if (event && !Number.isInteger(parseInt(event.data))) {
+          return 0;
+        }
+
+        if (!currentValue) {
+          return;
+        }
+
+        currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+
+        if (currentValue > MAX_FLOAT) {
+          return 0;
+        }
+
+        return currentValue;
+      };
+    } else if (valueType === 'year') {
+      return function (currentValue, event) {
+        if (event && !Number.isInteger(parseInt(event.data))) {
+          return 0;
+        }
+
+        if (!currentValue) {
+          return;
+        }
+
+        currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+
+        if (currentValue > 3000) {
+          return 0;
+        }
+
+        if (currentValue > MAX_FLOAT) {
+          return 0;
+        }
+
+        return currentValue;
+      };
     } else {
       return null;
     }

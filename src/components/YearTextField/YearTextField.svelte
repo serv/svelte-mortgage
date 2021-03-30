@@ -3,4 +3,4 @@
   export let options;
 </script>
 
-<TextField label="Year" valueType="number" />
+<TextField label="Year" valueType="year" />
