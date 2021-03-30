@@ -14,7 +14,7 @@
   valueType = valueType ? validateValueType(valueType) : null;
 
   let inputClass =
-    'w-full p-1.5 transition-all focus:outline-none focus:ring focus:border-blue-300';
+    'w-full px-3 py-2 transition-all focus:outline-none focus:ring focus:border-blue-300';
 
   if (prefix && suffix) {
     // Do not round border.
