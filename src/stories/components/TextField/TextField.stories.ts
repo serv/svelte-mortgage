@@ -70,3 +70,8 @@ WithReadOnly.args = {
     value: 2.55
   }
 };
+
+export const WithInputValue = Template.bind({});
+WithInputValue.args = {
+  label: 'With Input Value'
+};
