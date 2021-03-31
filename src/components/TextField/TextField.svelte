@@ -7,12 +7,14 @@
   export let subtext;
   export let valueType;
   export let suffix;
+  export let inputValue;
   prefix = prefix ? prefix : null;
   label = label ? label : null;
   subtext = subtext ? subtext : null;
   suffix = suffix ? suffix : null;
   valueType = valueType ? validateValueType(valueType) : null;
 
+  console.log(inputValue);
   let inputClass =
     'w-full px-3 py-2 transition-all focus:outline-none focus:ring focus:border-blue-300';
 
@@ -61,9 +63,13 @@
           return 0;
         }
 
-        return Number.parseFloat(currentValue).toLocaleString('en-US', {
+        currentValue = Number.parseFloat(currentValue).toLocaleString('en-US', {
           maximumFractionDigits: 2
         });
+
+        inputValue = currentValue;
+
+        return currentValue;
       };
     } else if (valueType === 'number') {
       return function (currentValue, event) {
@@ -80,6 +86,8 @@
         if (currentValue > MAX_FLOAT) {
           return 0;
         }
+
+        inputValue = currentValue;
 
         return currentValue;
       };
@@ -103,10 +111,16 @@
           return 0;
         }
 
+        inputValue = currentValue;
+
         return currentValue;
       };
     } else {
-      return null;
+      return function (currentValue, event) {
+        inputValue = currentValue;
+
+        return currentValue;
+      };
     }
   };
 </script>
