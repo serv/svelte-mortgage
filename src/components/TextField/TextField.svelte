@@ -14,7 +14,6 @@
   suffix = suffix ? suffix : null;
   valueType = valueType ? validateValueType(valueType) : null;
 
-  console.log(inputValue);
   let inputClass =
     'w-full px-3 py-2 transition-all focus:outline-none focus:ring focus:border-blue-300';
 
@@ -26,6 +25,10 @@
     inputClass += ' rounded-l';
   } else {
     inputClass += ' rounded';
+  }
+
+  if (options && options.readOnly === true) {
+    inputClass += ' bg-gray-200';
   }
 
   // currency is the only supported valueType.

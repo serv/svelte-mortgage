@@ -66,7 +66,7 @@ export const WithReadOnly = Template.bind({});
 WithReadOnly.args = {
   label: 'Annual Percentage Rate (APR)',
   options: {
-    readonly: true,
+    readOnly: true,
     value: 2.55
   }
 };
