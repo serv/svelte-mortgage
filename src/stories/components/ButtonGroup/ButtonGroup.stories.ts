@@ -25,6 +25,15 @@ WithContent.args = {
   content: ['First', 'Second', 'Third']
 };
 
+export const WithContentHash = Template.bind({});
+WithContentHash.args = {
+  content: [
+    { display: 'First', value: 1 },
+    { display: 'Second', value: 2 },
+    { display: 'Third', value: 3 }
+  ]
+};
+
 export const WithColor = Template.bind({});
 WithColor.args = {
   options: {
