@@ -5,7 +5,7 @@
   export let color;
   color = color ? color : 'blue';
   content = content ? content : [];
-  let className = `max-w-max bg-${color}-600 text-white px-4 py-2 border-${color}-800 cursor-pointer hover:bg-${color}-700 focus:outline-none focus:ring-2 focus:ring-${color}-700 focus:ring-opacity-50`;
+  let className = `max-w-max max-h-11 bg-${color}-600 text-white px-4 py-2 border-${color}-800 cursor-pointer hover:bg-${color}-700 focus:outline-none focus:ring-2 focus:ring-${color}-700 focus:ring-opacity-50`;
 </script>
 
 <div class="button-group flex">
