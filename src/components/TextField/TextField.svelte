@@ -60,7 +60,9 @@
           return;
         }
 
-        currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+        if (typeof currentValue === 'string') {
+          currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+        }
 
         if (currentValue > MAX_FLOAT) {
           return 0;
