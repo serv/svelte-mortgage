@@ -59,14 +59,10 @@
 
     if (valueType === 'currency') {
       return function (currentValue, event) {
-        console.log(125, currentValue);
-
         if (event && !Number.isInteger(parseInt(event.data))) {
           inputValue = 0;
           return inputValue;
         }
-
-        console.log(123, currentValue);
 
         if (!currentValue) {
           inputValue = 0;
