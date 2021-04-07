@@ -1,5 +1,6 @@
 <script lang="ts">
   import Input from './Input.svelte';
+  import { uniqueId } from 'lodash-es';
 
   export let options;
   export let prefix;
@@ -8,11 +9,17 @@
   export let valueType;
   export let suffix;
   export let inputValue;
+  export let maximum;
+  export let minimum;
   prefix = prefix ? prefix : null;
   label = label ? label : null;
   subtext = subtext ? subtext : null;
   suffix = suffix ? suffix : null;
   valueType = valueType ? validateValueType(valueType) : null;
+  maximum = maximum ? maximum : null;
+  minimum = minimum ? minimum : null;
+
+  const divId = uniqueId('textFieldInput_');
 
   let inputClass =
     'w-full px-3 py-2 transition-all focus:outline-none focus:ring focus:border-blue-300';
@@ -52,12 +59,18 @@
 
     if (valueType === 'currency') {
       return function (currentValue, event) {
+        console.log(125, currentValue);
+
         if (event && !Number.isInteger(parseInt(event.data))) {
-          return 0;
+          inputValue = 0;
+          return inputValue;
         }
 
+        console.log(123, currentValue);
+
         if (!currentValue) {
-          return;
+          inputValue = 0;
+          return inputValue;
         }
 
         if (typeof currentValue === 'string') {
@@ -65,7 +78,8 @@
         }
 
         if (currentValue > MAX_FLOAT) {
-          return 0;
+          inputValue = 0;
+          return inputValue;
         }
 
         currentValue = Number.parseFloat(currentValue).toLocaleString('en-US', {
@@ -74,57 +88,73 @@
 
         inputValue = currentValue;
 
-        return currentValue;
+        return inputValue;
       };
     } else if (valueType === 'number') {
       return function (currentValue, event) {
         if (event && !Number.isInteger(parseInt(event.data))) {
-          return 0;
+          inputValue = 0;
+          return inputValue;
         }
 
         if (!currentValue) {
-          return;
+          inputValue = 0;
+          return inputValue;
         }
 
-        currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+        if (typeof currentValue === 'string') {
+          currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+        }
 
-        if (currentValue > MAX_FLOAT) {
-          return 0;
+        if (currentValue > MAX_FLOAT || currentValue > maximum) {
+          inputValue = 0;
+          return inputValue;
+        }
+
+        if (currentValue < minimum) {
+          inputValue = 0;
+          return inputValue;
         }
 
         inputValue = currentValue;
 
-        return currentValue;
+        return inputValue;
       };
     } else if (valueType === 'year') {
       return function (currentValue, event) {
         if (event && !Number.isInteger(parseInt(event.data))) {
-          return 0;
+          inputValue = 0;
+          return inputValue;
         }
 
         if (!currentValue) {
-          return;
+          inputValue = 0;
+          return inputValue;
         }
 
-        currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+        if (typeof currentValue === 'string') {
+          currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+        }
 
         if (currentValue > 3000) {
-          return 0;
+          inputValue = 0;
+          return inputValue;
         }
 
         if (currentValue > MAX_FLOAT) {
-          return 0;
+          inputValue = 0;
+          return inputValue;
         }
 
         inputValue = currentValue;
 
-        return currentValue;
+        return inputValue;
       };
     } else {
       return function (currentValue, event) {
         inputValue = currentValue;
 
-        return currentValue;
+        return inputValue;
       };
     }
   };
@@ -132,7 +162,7 @@
 
 <div class="text-field flex flex-col">
   {#if label}
-    <label class="text-field-label leading-8" for="textFieldInput">
+    <label class="text-field-label leading-8" for={divId}>
       {label}
     </label>
   {/if}
@@ -145,7 +175,7 @@
     <Input
       options={{
         type: 'text',
-        id: 'textFieldInput',
+        id: divId,
         class: inputClass,
         ...options
       }}

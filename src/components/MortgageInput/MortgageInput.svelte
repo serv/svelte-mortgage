@@ -6,8 +6,10 @@
   import DownPayment from '../DownPayment';
 
   import config from '../../config';
-  const { defaultHomePrice } = config;
-  console.log(defaultHomePrice);
+  const { defaultHomePrice, defaultDownPaymentPercentage } = config;
+
+  let homePrice = defaultHomePrice;
+  export let downPaymentPercentage = defaultDownPaymentPercentage;
 </script>
 
 <div>
@@ -16,8 +18,9 @@
     label="Home Price"
     valueType="currency"
     options={{ value: defaultHomePrice }}
+    bind:inputValue={homePrice}
   />
-  <DownPayment />
+  <DownPayment {homePrice} {downPaymentPercentage} />
   <InterestRate />
   <MortgageLength />
   <MortgageStartMonthYear />
