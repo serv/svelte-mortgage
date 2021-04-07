@@ -16,8 +16,9 @@
   subtext = subtext ? subtext : null;
   suffix = suffix ? suffix : null;
   valueType = valueType ? validateValueType(valueType) : null;
-  maximum = maximum ? maximum : null;
-  minimum = minimum ? minimum : null;
+
+  maximum = maximum ? maximum : Number.MAX_VALUE;
+  minimum = minimum ? minimum : Number.MIN_VALUE;
 
   const divId = uniqueId('textFieldInput_');
 
@@ -73,7 +74,7 @@
           currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
         }
 
-        if (currentValue > MAX_FLOAT) {
+        if (currentValue > MAX_FLOAT || currentValue > maximum) {
           inputValue = 0;
           return inputValue;
         }
