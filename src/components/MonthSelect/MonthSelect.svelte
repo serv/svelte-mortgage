@@ -1,8 +1,13 @@
 <script lang="ts">
-  import { select_options } from 'svelte/internal';
   import Select from '../Select';
 
   export let options;
+  export let defaultMonth;
+
+  console.log('defaultMonth', defaultMonth);
+  options = options ? options : {};
+  options.defaultValue = defaultMonth;
+
   let months = [
     {
       value: 1,
@@ -55,4 +60,4 @@
   ];
 </script>
 
-<Select label="Month" selectOptions={months} />
+<Select label="Month" selectOptions={months} {options} />

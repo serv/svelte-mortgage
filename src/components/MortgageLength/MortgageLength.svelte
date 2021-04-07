@@ -2,7 +2,9 @@
   import ButtonGroup from '../ButtonGroup';
   import TextField from '../TextField';
 
-  let value;
+  export let defaultMortgageLength;
+
+  let value = defaultMortgageLength;
   $: currentValue = value;
   const content = [
     { display: 30, value: 30 },
