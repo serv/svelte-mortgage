@@ -71,7 +71,9 @@
         }
 
         if (typeof currentValue === 'string') {
-          currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+          currentValue = Number.parseFloat(
+            currentValue.replace(/[^0-9.]/g, '')
+          );
         }
 
         if (currentValue > MAX_FLOAT || currentValue > maximum) {
@@ -89,6 +91,11 @@
       };
     } else if (valueType === 'number') {
       return function (currentValue, event) {
+        if (event && event.data === '.') {
+          inputValue = currentValue;
+          return inputValue;
+        }
+
         if (event && !Number.isInteger(parseInt(event.data))) {
           inputValue = 0;
           return inputValue;
@@ -100,7 +107,9 @@
         }
 
         if (typeof currentValue === 'string') {
-          currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+          currentValue = Number.parseFloat(
+            currentValue.replace(/[^0-9.]/g, '')
+          );
         }
 
         if (currentValue > MAX_FLOAT || currentValue > maximum) {
@@ -130,7 +139,9 @@
         }
 
         if (typeof currentValue === 'string') {
-          currentValue = Number.parseFloat(currentValue.replace(/\D/g, ''));
+          currentValue = Number.parseFloat(
+            currentValue.replace(/[^0-9.]/g, '')
+          );
         }
 
         if (currentValue > 3000) {

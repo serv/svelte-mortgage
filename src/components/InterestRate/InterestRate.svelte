@@ -1,6 +1,8 @@
 <script lang="ts">
   import TextField from '../TextField';
 
+  export let defaultInterestRate;
+
   let interestRate;
   $: apr = (function () {
     if (!interestRate) {
@@ -21,6 +23,7 @@
       prefix="%"
       valueType="number"
       bind:inputValue={interestRate}
+      options={{ value: defaultInterestRate }}
     />
   </div>
 

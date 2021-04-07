@@ -4,9 +4,17 @@
   import InterestRate from '../InterestRate';
   import TextField from '../TextField';
   import DownPayment from '../DownPayment';
+  import * as dayjs from 'dayjs';
 
   import config from '../../config';
-  const { defaultHomePrice, defaultDownPaymentPercentage } = config;
+  const {
+    defaultHomePrice,
+    defaultDownPaymentPercentage,
+    defaultInterestRate,
+    defaultMortgageLength
+  } = config;
+
+  const currentDate = dayjs();
 
   let homePrice = defaultHomePrice;
   export let downPaymentPercentage = defaultDownPaymentPercentage;
@@ -21,7 +29,10 @@
     bind:inputValue={homePrice}
   />
   <DownPayment {homePrice} {downPaymentPercentage} />
-  <InterestRate />
-  <MortgageLength />
-  <MortgageStartMonthYear />
+  <InterestRate {defaultInterestRate} />
+  <MortgageLength {defaultMortgageLength} />
+  <MortgageStartMonthYear
+    defaultMonth={dayjs().month() + 1}
+    defaultYear={dayjs().year()}
+  />
 </div>
