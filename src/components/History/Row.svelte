@@ -12,23 +12,17 @@
   mortgageLength = mortgageLength ? mortgageLength : '0';
 </script>
 
-<div class="flex flex-row">
-  <div class="mr-3 w-40">
-    <TextField
-      prefix="🏠"
-      valueType="currency"
-      options={{ readOnly: true, value: homePrice }}
-    />
+<div class="flex flex-row border max-w-max">
+  <div class="w-40">
+    {homePrice}
   </div>
-  <div class="mr-3 w-24">
-    <TextField prefix="⬇" options={{ readOnly: true, value: downPayment }} />
+  <div class="w-24">
+    {downPayment}
   </div>
-  <div class="mr-3 w-24">
-    <TextField prefix="%" options={{ readOnly: true, value: percentage }} />
+  <div class="w-24">
+    {percentage}
   </div>
-  <div
-    class="bg-yellow-500 text-white font-bold tracking-widest px-3 pt-2 rounded"
-  >
+  <div class="w-24">
     {mortgageLength}
   </div>
 </div>

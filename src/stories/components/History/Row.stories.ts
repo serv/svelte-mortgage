@@ -14,7 +14,7 @@ export const WithNone = Template.bind({});
 WithNone.args = {};
 
 export const WithValues = Template.bind({});
-WithNone.args = {
+WithValues.args = {
   homePrice: 1_234_000,
   downPayment: 25,
   percentage: 2.725,
