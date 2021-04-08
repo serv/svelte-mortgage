@@ -21,18 +21,32 @@
 </script>
 
 <div>
-  <TextField
-    prefix="$"
-    label="Home Price"
-    valueType="currency"
-    options={{ value: defaultHomePrice }}
-    bind:inputValue={homePrice}
-  />
-  <DownPayment {homePrice} {downPaymentPercentage} />
-  <InterestRate {defaultInterestRate} />
-  <MortgageLength {defaultMortgageLength} />
-  <MortgageStartMonthYear
-    defaultMonth={dayjs().month() + 1}
-    defaultYear={dayjs().year()}
-  />
+  <div class="mb-6">
+    <TextField
+      prefix="$"
+      label="Home Price"
+      valueType="currency"
+      options={{ value: defaultHomePrice }}
+      bind:inputValue={homePrice}
+    />
+  </div>
+
+  <div class="mb-6">
+    <DownPayment {homePrice} {downPaymentPercentage} />
+  </div>
+
+  <div class="mb-6">
+    <InterestRate {defaultInterestRate} />
+  </div>
+
+  <div class="mb-6">
+    <MortgageLength {defaultMortgageLength} />
+  </div>
+
+  <div class="">
+    <MortgageStartMonthYear
+      defaultMonth={dayjs().month() + 1}
+      defaultYear={dayjs().year()}
+    />
+  </div>
 </div>
