@@ -1,9 +1,6 @@
 <script lang="ts">
   import Rows from './Rows.svelte';
-
-  export let content;
-
-  content = content ? content : [];
+  import { history } from '../../services/stores';
 </script>
 
 <div class="max-h-64 overflow-y-scroll">
@@ -14,5 +11,5 @@
     <div class="w-24 pl-2">Mortgage Length</div>
   </div>
 
-  <Rows {content} />
+  <Rows content={$history} />
 </div>

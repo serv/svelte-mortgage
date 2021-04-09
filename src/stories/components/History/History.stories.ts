@@ -1,5 +1,4 @@
 import History from '../../../components/History';
-import faker from 'faker';
 import _ from 'lodash-es';
 
 export default {
@@ -36,19 +35,22 @@ WithContent.args = {
   ]
 };
 
-const many = [];
-const mortgageLengths = [30, 20, 15, 10];
-for (let i = 0; i < 100; i++) {
-  let obj = {
+function objFactory() {
+  return {
     homePrice: _.random(100_000, 2_000_000),
     downPayment: _.random(0, 50.0),
     percentage: _.random(1, 7.0),
     mortgageLength: _.sample(mortgageLengths)
   };
-  many.push(obj);
 }
 
-export const WithMany = Template.bind({});
-WithMany.args = {
-  content: many
-};
+const many = [];
+const mortgageLengths = [30, 20, 15, 10];
+for (let i = 0; i < 100; i++) {
+  let obj = objFactory();
+  many.push(obj);
+}
+localStorage.setItem('history', JSON.stringify(many));
+
+export const WithStore = Template.bind({});
+WithStore.args = {};
