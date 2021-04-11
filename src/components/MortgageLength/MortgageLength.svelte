@@ -3,9 +3,10 @@
   import TextField from '../TextField';
 
   export let defaultMortgageLength;
+  export let mortgageLength;
 
   let value = defaultMortgageLength;
-  $: currentValue = value;
+  $: mortgageLength = value;
   const content = [
     { display: 30, value: 30 },
     { display: 20, value: 20 },
@@ -18,7 +19,7 @@
   <div class="mb-2">Mortgage Length</div>
   <div class="flex">
     <div class="mr-4">
-      <TextField options={{ value: currentValue }} />
+      <TextField options={{ value: mortgageLength }} />
     </div>
 
     <ButtonGroup {content} bind:inputValue={value} />

@@ -21,16 +21,16 @@
 
   let homePrice = defaultHomePrice;
   let interestRate = defaultInterestRate;
+  let mortgageLength = defaultMortgageLength;
   export let downPaymentPercentage = defaultDownPaymentPercentage;
   $: downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   function handleClick() {
-    console.log(interestRate * 100);
     const mortgage = new Mortgage(
       homePrice,
       downPaymentPercentage,
       interestRate * 100,
-      0,
+      mortgageLength,
       0,
       0
     );
@@ -62,7 +62,7 @@
   </div>
 
   <div class="mb-6">
-    <MortgageLength {defaultMortgageLength} />
+    <MortgageLength {defaultMortgageLength} bind:mortgageLength />
   </div>
 
   <div class="mb-6">
