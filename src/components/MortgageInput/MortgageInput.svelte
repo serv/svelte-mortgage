@@ -20,11 +20,20 @@
   const currentDate = dayjs();
 
   let homePrice = defaultHomePrice;
+  let interestRate = defaultInterestRate;
   export let downPaymentPercentage = defaultDownPaymentPercentage;
   $: downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   function handleClick() {
-    const mortgage = new Mortgage(homePrice, downPaymentPercentage, 0, 0, 0, 0);
+    console.log(interestRate * 100);
+    const mortgage = new Mortgage(
+      homePrice,
+      downPaymentPercentage,
+      interestRate * 100,
+      0,
+      0,
+      0
+    );
     history.add(mortgage);
   }
 </script>
@@ -49,7 +58,7 @@
   </div>
 
   <div class="mb-6">
-    <InterestRate {defaultInterestRate} />
+    <InterestRate {defaultInterestRate} bind:interestRate />
   </div>
 
   <div class="mb-6">

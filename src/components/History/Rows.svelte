@@ -12,7 +12,7 @@
       id={el.id}
       homePrice={el.homePrice}
       downPayment={el.downPayment}
-      percentage={el.percentage}
+      percentage={el.interestRate}
       mortgageLength={el.mortgageLength}
     />
   {:else}
@@ -22,7 +22,7 @@
       id={el.id}
       homePrice={el.homePrice}
       downPayment={el.downPayment}
-      percentage={el.percentage}
+      percentage={el.interestRate}
       mortgageLength={el.mortgageLength}
     />
   {/if}

@@ -2,8 +2,8 @@
   import TextField from '../TextField';
 
   export let defaultInterestRate;
+  export let interestRate;
 
-  let interestRate;
   $: apr = (function () {
     if (!interestRate) {
       return 0;
