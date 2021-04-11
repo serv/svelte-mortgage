@@ -5,6 +5,8 @@
   import InterestRate from '../InterestRate';
   import TextField from '../TextField';
   import DownPayment from '../DownPayment';
+  import { history } from '../../services/stores';
+  import Mortgage from '../../models/Mortgage';
   import * as dayjs from 'dayjs';
 
   import config from '../../config';
@@ -19,6 +21,12 @@
 
   let homePrice = defaultHomePrice;
   export let downPaymentPercentage = defaultDownPaymentPercentage;
+
+  function handleClick() {
+    const mortgage = new Mortgage(homePrice, 0, 0, 0, 0, 0);
+    $history.push(mortgage);
+    history.set($history);
+  }
 </script>
 
 <div>
@@ -52,6 +60,6 @@
   </div>
 
   <div class="flex justify-center">
-    <Button content="Calculate" />
+    <Button {handleClick} content="Calculate" />
   </div>
 </div>
