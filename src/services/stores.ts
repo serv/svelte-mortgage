@@ -13,10 +13,13 @@ function createHistory() {
 
   return {
     subscribe,
-    remove: (i) => {
+    remove: (id) => {
       let historyFromLocalStorage = getHistory();
+      console.log(id);
 
-      historyFromLocalStorage = historyFromLocalStorage.splice(i, 1);
+      historyFromLocalStorage = historyFromLocalStorage.filter(
+        (e) => e.id !== id
+      );
 
       localStorage.setItem('history', JSON.stringify(historyFromLocalStorage));
       return set(historyFromLocalStorage);

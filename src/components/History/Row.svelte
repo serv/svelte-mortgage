@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { history } from '../../services/stores';
+
   export let start;
   export let end;
   export let homePrice;
@@ -34,7 +36,9 @@
   }
 
   function onDelete(e) {
-    console.log(e.target.getAttribute('data-id'));
+    const id = e.target.getAttribute('data-id');
+
+    history.remove(id);
   }
 </script>
 
