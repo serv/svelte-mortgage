@@ -9,6 +9,7 @@
     <Row
       start="true"
       end="true"
+      id={el.id}
       homePrice={el.homePrice}
       downPayment={el.downPayment}
       percentage={el.percentage}
@@ -18,6 +19,7 @@
     <Row
       start="false"
       end="true"
+      id={el.id}
       homePrice={el.homePrice}
       downPayment={el.downPayment}
       percentage={el.percentage}

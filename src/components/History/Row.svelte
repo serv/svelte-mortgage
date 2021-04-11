@@ -5,6 +5,7 @@
   export let downPayment;
   export let percentage;
   export let mortgageLength;
+  export let id;
 
   start = start ? start === 'true' : false;
   end = end ? end === 'true' : false;
@@ -31,9 +32,13 @@
 
     return baseClass;
   }
+
+  function onDelete(e) {
+    console.log(e.target.getAttribute('data-id'));
+  }
 </script>
 
-<div class={baseClass}>
+<div data-id={id} class={baseClass}>
   <div class="w-40 border-r pl-2">
     $ {homePrice}
   </div>
@@ -43,7 +48,10 @@
   <div class="w-32 border-r pl-2">
     {percentage} %
   </div>
-  <div class="w-36 pl-2">
+  <div class="w-36 border-r pl-2">
     {mortgageLength}
+  </div>
+  <div class="w-16 pl-2">
+    <div data-id={id} on:click={onDelete} class="w-max cursor-pointer">❌</div>
   </div>
 </div>

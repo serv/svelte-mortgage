@@ -24,14 +24,16 @@
         <div class="w-40 border-r pl-2">Home Price</div>
         <div class="w-32 border-r pl-2">Down Payment</div>
         <div class="w-32 border-r pl-2">Interest Rate</div>
-        <div class="w-36 pl-2">Mortgage Length</div>
+        <div class="w-36 border-r pl-2">Mortgage Length</div>
+        <div class="w-16 pl-2">Delete</div>
       </div>
     {:else}
       <div class="flex flex-row max-w-max border">
         <div class="w-40 border-r pl-2">Home Price</div>
         <div class="w-32 border-r pl-2">Down Payment</div>
         <div class="w-32 border-r pl-2">Interest Rate</div>
-        <div class="w-36 pl-2">Mortgage Length</div>
+        <div class="w-36 border-r pl-2">Mortgage Length</div>
+        <div class="w-16 pl-2">Delete</div>
       </div>
       <div class="flex w-full border-l border-r border-b justify-center py-6">
         No result
@@ -44,6 +46,6 @@
   </div>
 
   <div class="flex justify-center">
-    <Button handleClick={handleReset} content="Reset" />
+    <Button handleClick={handleReset} content="🗑️ Reset" />
   </div>
 </div>

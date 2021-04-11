@@ -1,4 +1,7 @@
+import { nanoid } from 'nanoid';
+
 export default class Mortgage {
+  id: string;
   homePrice: number;
   downPayment: number;
   interestRate: number;
@@ -14,6 +17,7 @@ export default class Mortgage {
     startMonth: number,
     startYear: number
   ) {
+    this.id = nanoid();
     this.homePrice = homePrice;
     this.downPayment = downPayment;
     this.interestRate = interestRate;
