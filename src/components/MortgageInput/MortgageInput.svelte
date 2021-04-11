@@ -24,8 +24,7 @@
 
   function handleClick() {
     const mortgage = new Mortgage(homePrice, 0, 0, 0, 0, 0);
-    $history.push(mortgage);
-    history.set($history);
+    history.add(mortgage);
   }
 </script>
 
