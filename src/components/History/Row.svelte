@@ -37,13 +37,13 @@
   <div class="w-40 border-r pl-2">
     $ {homePrice}
   </div>
-  <div class="w-24 border-r pl-2">
+  <div class="w-32 border-r pl-2">
     {downPayment} %
   </div>
-  <div class="w-24 border-r pl-2">
+  <div class="w-32 border-r pl-2">
     {percentage} %
   </div>
-  <div class="w-24 pl-2">
+  <div class="w-36 pl-2">
     {mortgageLength}
   </div>
 </div>
