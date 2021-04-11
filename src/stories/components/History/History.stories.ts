@@ -46,7 +46,7 @@ function objFactory() {
 
 const many = [];
 const mortgageLengths = [30, 20, 15, 10];
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 20; i++) {
   let obj = objFactory();
   many.push(obj);
 }
