@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Button from '../Button';
   import MortgageLength from '../MortgageLength';
   import MortgageStartMonthYear from '../MortgageStartMonthYear';
   import InterestRate from '../InterestRate';
@@ -43,10 +44,14 @@
     <MortgageLength {defaultMortgageLength} />
   </div>
 
-  <div class="">
+  <div class="mb-6">
     <MortgageStartMonthYear
       defaultMonth={dayjs().month() + 1}
       defaultYear={dayjs().year()}
     />
+  </div>
+
+  <div class="flex justify-center">
+    <Button content="Calculate" />
   </div>
 </div>
