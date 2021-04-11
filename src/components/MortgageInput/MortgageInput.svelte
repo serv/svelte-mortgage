@@ -21,9 +21,10 @@
 
   let homePrice = defaultHomePrice;
   export let downPaymentPercentage = defaultDownPaymentPercentage;
+  $: downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   function handleClick() {
-    const mortgage = new Mortgage(homePrice, 0, 0, 0, 0, 0);
+    const mortgage = new Mortgage(homePrice, downPaymentPercentage, 0, 0, 0, 0);
     history.add(mortgage);
   }
 </script>
@@ -40,7 +41,11 @@
   </div>
 
   <div class="mb-6">
-    <DownPayment {homePrice} {downPaymentPercentage} />
+    <DownPayment
+      {homePrice}
+      bind:downPaymentPercentage
+      bind:downPaymentAmount
+    />
   </div>
 
   <div class="mb-6">

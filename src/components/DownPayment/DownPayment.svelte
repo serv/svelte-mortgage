@@ -3,6 +3,7 @@
 
   export let homePrice;
   export let downPaymentPercentage;
+  export let downPaymentAmount;
 
   const maxPercentage = 100;
   const minPercentage = 0;
