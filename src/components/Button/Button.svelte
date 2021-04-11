@@ -12,7 +12,7 @@
 {#if isDiv}
   <div class={className} {...options}>{content}</div>
 {:else}
-  <button type="button" class={className} {...options} on:click={handleClick}
-    >{content}</button
-  >
+  <button type="button" class={className} {...options} on:click={handleClick}>
+    {content}
+  </button>
 {/if}

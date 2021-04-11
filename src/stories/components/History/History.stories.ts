@@ -1,4 +1,5 @@
 import History from '../../../components/History';
+import Mortgage from '../../../models/Mortgage';
 import _ from 'lodash-es';
 
 export default {
@@ -36,12 +37,19 @@ WithContent.args = {
 };
 
 function objFactory() {
-  return {
-    homePrice: _.random(100_000, 2_000_000),
-    downPayment: _.random(0, 50.0),
-    percentage: _.random(1, 7.0),
-    mortgageLength: _.sample(mortgageLengths)
-  };
+  const homePrice = _.random(100_000, 2_000_000);
+  const downPayment = _.random(0, 50.0);
+  const percentage = _.random(1, 7.0);
+  const mortgageLength = _.sample(mortgageLengths);
+
+  return new Mortgage(
+    homePrice,
+    downPayment,
+    percentage,
+    mortgageLength,
+    4,
+    2021
+  );
 }
 
 const many = [];
