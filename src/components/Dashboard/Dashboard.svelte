@@ -13,7 +13,11 @@
           MortageHero
         </span>
 
-        <MortgageInput />
+        <div class="mb-8">
+          <MortgageInput />
+        </div>
+
+        <span class="text-gray-600 text-xl mb-4">Previously Generated</span>
         <History />
       </div>
     </div>
