@@ -29,7 +29,10 @@ function createHistory() {
       localStorage.setItem('history', JSON.stringify(historyFromLocalStorage));
       return set(historyFromLocalStorage);
     },
-    reset: () => set([])
+    reset: () => {
+      localStorage.setItem('history', []);
+      set([]);
+    }
   };
 }
 
