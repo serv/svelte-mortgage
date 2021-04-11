@@ -15,7 +15,6 @@ function createHistory() {
     subscribe,
     remove: (id) => {
       let historyFromLocalStorage = getHistory();
-      console.log(id);
 
       historyFromLocalStorage = historyFromLocalStorage.filter(
         (e) => e.id !== id
