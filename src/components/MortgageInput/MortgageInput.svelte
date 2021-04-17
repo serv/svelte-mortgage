@@ -8,22 +8,31 @@
   import { history } from '../../services/stores';
   import Mortgage from '../../models/Mortgage';
   import * as dayjs from 'dayjs';
+  import { amortize } from 'amortizationjs';
 
   import config from '../../config';
   const {
     defaultHomePrice,
     defaultDownPaymentPercentage,
     defaultInterestRate,
-    defaultMortgageLength
+    defaultMortgageLength,
+    defaultPaymentCountPerYear
   } = config;
-
-  const currentDate = dayjs();
 
   let homePrice = defaultHomePrice;
   let interestRate = defaultInterestRate;
   let mortgageLength = defaultMortgageLength;
-  export let downPaymentPercentage = defaultDownPaymentPercentage;
-  $: downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
+  let downPaymentPercentage = defaultDownPaymentPercentage;
+  let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
+
+  // TODO: Loan must be exported for the Dashboard to use it.
+  $: loan = amortize(
+    homePrice,
+    downPaymentAmount,
+    interestRate,
+    mortgageLength,
+    defaultPaymentCountPerYear
+  );
 
   function handleClick() {
     const mortgage = new Mortgage(
