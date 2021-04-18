@@ -1,6 +1,19 @@
 <script lang="ts">
   import History from '../History';
   import MortgageInput from '../MortgageInput';
+  import config from '../../config';
+
+  const {
+    defaultHomePrice,
+    defaultDownPaymentPercentage,
+    defaultInterestRate,
+    defaultMortgageLength
+  } = config;
+
+  let homePrice: any = defaultHomePrice;
+  let interestRate = defaultInterestRate;
+  let mortgageLength = defaultMortgageLength;
+  let downPaymentPercentage = defaultDownPaymentPercentage;
 </script>
 
 <div class="flex h-screen">
@@ -14,7 +27,12 @@
         </span>
 
         <div class="mb-8">
-          <MortgageInput />
+          <MortgageInput
+            {homePrice}
+            {interestRate}
+            {mortgageLength}
+            {downPaymentPercentage}
+          />
         </div>
 
         <span class="text-gray-600 text-xl mb-4">Previously Generated</span>

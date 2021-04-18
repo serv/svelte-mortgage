@@ -20,10 +20,10 @@
     defaultPaymentCountPerYear
   } = config;
 
-  let homePrice: any = defaultHomePrice;
-  let interestRate = defaultInterestRate;
-  let mortgageLength = defaultMortgageLength;
-  let downPaymentPercentage = defaultDownPaymentPercentage;
+  export let homePrice: any;
+  export let interestRate;
+  export let mortgageLength;
+  export let downPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   // TODO: Loan must be exported for the Dashboard to use it.
