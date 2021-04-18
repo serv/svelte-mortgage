@@ -4,7 +4,6 @@
   export let options;
   export let defaultMonth;
 
-  console.log('defaultMonth', defaultMonth);
   options = options ? options : {};
   options.defaultValue = defaultMonth;
 

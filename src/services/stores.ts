@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { derived, writable } from 'svelte/store';
 
 function getHistory() {
   let historyFromLocalStorage: any = localStorage.getItem('history');
@@ -32,10 +32,43 @@ function createHistory() {
       return set(historyFromLocalStorage);
     },
     reset: () => {
-      localStorage.setItem('history', []);
+      localStorage.setItem('history', JSON.stringify([]));
       set([]);
+    },
+    get: (id) => {
+      let historyFromLocalStorage = getHistory();
+
+      if (historyFromLocalStorage.length < 1) {
+        return null;
+      }
+
+      if (id === null || id === undefined || id === 0) {
+        if (historyFromLocalStorage.length > 0) {
+          id = historyFromLocalStorage[0].id;
+        }
+      }
+
+      historyFromLocalStorage = historyFromLocalStorage.filter(
+        (e) => e.id === id
+      );
+
+      return historyFromLocalStorage[0];
     }
   };
 }
 
 export const history = createHistory();
+export const currentId = writable(0);
+export const currentHistory = derived(currentId, ($currentId) => {
+  let historyFromLocalStorage = getHistory();
+
+  if (historyFromLocalStorage.length < 1) {
+    return null;
+  }
+
+  historyFromLocalStorage = historyFromLocalStorage.filter(
+    (e) => e.id === $currentId
+  );
+
+  return historyFromLocalStorage[0];
+});

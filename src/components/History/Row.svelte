@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { history } from '../../services/stores';
+  import { history, currentId } from '../../services/stores';
 
   export let start;
   export let end;
@@ -40,11 +40,23 @@
 
     history.remove(id);
   }
+
+  function onSelect(e) {
+    const id = e.target.getAttribute('data-id');
+
+    currentId.set(id);
+  }
 </script>
 
 <div data-id={id} class={baseClass}>
   <div class="w-40 border-r pl-2">
-    $ {homePrice}
+    <div
+      on:click={onSelect}
+      data-id={id}
+      class="cursor-pointer w-max text-blue-600 hover:underline"
+    >
+      $ {homePrice}
+    </div>
   </div>
   <div class="w-32 border-r pl-2">
     {downPayment} %

@@ -20,17 +20,17 @@
     defaultPaymentCountPerYear
   } = config;
 
-  let homePrice: any = defaultHomePrice;
-  let interestRate = defaultInterestRate;
-  let mortgageLength = defaultMortgageLength;
-  let downPaymentPercentage = defaultDownPaymentPercentage;
+  export let homePrice: any;
+  export let interestRate;
+  export let mortgageLength;
+  export let downPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   // TODO: Loan must be exported for the Dashboard to use it.
   function handleClick() {
     const homePriceNumber =
       typeof homePrice === 'string'
-        ? parseFloat(homePrice.replace(',', ''))
+        ? parseFloat(homePrice.replaceAll(',', ''))
         : homePrice;
 
     let loan = amortize(
@@ -44,7 +44,7 @@
     const mortgage = new Mortgage(
       loan.amount,
       round(loan.downPaymentRatio * 100, 2),
-      round(loan.interest * 100, 2),
+      round(loan.interest, 2),
       loan.years,
       0,
       0
@@ -59,7 +59,7 @@
       prefix="$"
       label="Home Price"
       valueType="currency"
-      options={{ value: defaultHomePrice }}
+      options={{ value: homePrice }}
       bind:inputValue={homePrice}
     />
   </div>
@@ -73,11 +73,11 @@
   </div>
 
   <div class="mb-6">
-    <InterestRate {defaultInterestRate} bind:interestRate />
+    <InterestRate bind:interestRate />
   </div>
 
   <div class="mb-6">
-    <MortgageLength {defaultMortgageLength} bind:mortgageLength />
+    <MortgageLength bind:mortgageLength />
   </div>
 
   <div class="mb-6">

@@ -87,5 +87,5 @@
         {/if}
       {/if}
     {/each}
-  {:else}{/if}
+  {/if}
 </div>

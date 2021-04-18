@@ -1,7 +1,6 @@
 <script lang="ts">
   import TextField from '../TextField';
 
-  export let defaultInterestRate;
   export let interestRate;
 
   $: apr = (function () {
@@ -9,9 +8,9 @@
       return 0;
     }
 
-    interestRate = Number.parseFloat(interestRate) / 100;
+    interestRate = Number.parseFloat(interestRate);
 
-    let floating = Math.pow(1 + interestRate / 12, 12) - 1;
+    let floating = Math.pow(1 + interestRate / 100 / 12, 12) - 1;
     return (floating * 100).toFixed(5);
   })();
 </script>
@@ -23,7 +22,7 @@
       prefix="%"
       valueType="number"
       bind:inputValue={interestRate}
-      options={{ value: defaultInterestRate }}
+      options={{ value: interestRate }}
     />
   </div>
 
