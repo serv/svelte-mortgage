@@ -16,8 +16,6 @@ const many = [];
 const mortgageLengths = [30, 20, 15, 10];
 for (let i = 0; i < 7; i++) {
   let obj = objFactory();
-  console.log(obj);
-
   many.push(obj);
 }
 localStorage.setItem('history', JSON.stringify(many));

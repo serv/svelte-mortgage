@@ -26,8 +26,6 @@
   export let downPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
-  console.log('m', downPaymentPercentage);
-
   // TODO: Loan must be exported for the Dashboard to use it.
   function handleClick() {
     const homePriceNumber =

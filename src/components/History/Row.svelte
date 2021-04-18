@@ -43,7 +43,6 @@
 
   function onSelect(e) {
     const id = e.target.getAttribute('data-id');
-    console.log(id);
 
     currentId.set(id);
   }
