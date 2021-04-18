@@ -9,6 +9,7 @@
   import Mortgage from '../../models/Mortgage';
   import * as dayjs from 'dayjs';
   import amortize from 'amortizationjs';
+  import { round } from 'lodash-es';
 
   import config from '../../config';
   const {
@@ -19,27 +20,31 @@
     defaultPaymentCountPerYear
   } = config;
 
-  let homePrice = defaultHomePrice;
+  let homePrice: any = defaultHomePrice;
   let interestRate = defaultInterestRate;
   let mortgageLength = defaultMortgageLength;
   let downPaymentPercentage = defaultDownPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   // TODO: Loan must be exported for the Dashboard to use it.
-  $: loan = amortize(
-    homePrice,
-    downPaymentAmount,
-    interestRate,
-    mortgageLength,
-    defaultPaymentCountPerYear
-  );
-
   function handleClick() {
-    console.log(loan, homePrice, downPaymentAmount);
+    const homePriceNumber =
+      typeof homePrice === 'string'
+        ? parseFloat(homePrice.replace(',', ''))
+        : homePrice;
+
+    let loan = amortize(
+      homePriceNumber,
+      downPaymentAmount,
+      interestRate,
+      mortgageLength,
+      defaultPaymentCountPerYear
+    );
+
     const mortgage = new Mortgage(
       loan.amount,
-      loan.downPaymentRatio * 100,
-      loan.interest,
+      round(loan.downPaymentRatio * 100, 2),
+      round(loan.interest * 100, 2),
       loan.years,
       0,
       0
