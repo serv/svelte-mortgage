@@ -24,7 +24,7 @@
     homePrice = currentHistory.homePrice;
     interestRate = currentHistory.interestRate;
     mortgageLength = currentHistory.years;
-    downPaymentPercentage = currentHistory.downPaymentRatio;
+    downPaymentPercentage = currentHistory.downPayment;
   } else {
     console.log('after', currentHistory);
     homePrice = defaultHomePrice;
