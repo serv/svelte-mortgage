@@ -35,11 +35,12 @@
   );
 
   function handleClick() {
+    console.log(loan, homePrice, downPaymentAmount);
     const mortgage = new Mortgage(
-      homePrice,
-      downPaymentPercentage,
-      interestRate * 100,
-      mortgageLength,
+      loan.amount,
+      loan.downPaymentRatio * 100,
+      loan.interest,
+      loan.years,
       0,
       0
     );
