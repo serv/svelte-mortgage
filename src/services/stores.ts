@@ -32,7 +32,7 @@ function createHistory() {
       return set(historyFromLocalStorage);
     },
     reset: () => {
-      localStorage.setItem('history', []);
+      localStorage.setItem('history', JSON.stringify([]));
       set([]);
     },
     get: (id) => {

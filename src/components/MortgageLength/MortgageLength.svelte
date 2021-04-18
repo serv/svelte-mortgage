@@ -2,11 +2,8 @@
   import ButtonGroup from '../ButtonGroup';
   import TextField from '../TextField';
 
-  export let defaultMortgageLength;
   export let mortgageLength;
 
-  let value = defaultMortgageLength;
-  $: mortgageLength = value;
   const content = [
     { display: 30, value: 30 },
     { display: 20, value: 20 },
@@ -22,6 +19,6 @@
       <TextField options={{ value: mortgageLength }} />
     </div>
 
-    <ButtonGroup {content} bind:inputValue={value} />
+    <ButtonGroup {content} bind:inputValue={mortgageLength} />
   </div>
 </div>

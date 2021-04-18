@@ -75,11 +75,11 @@
   </div>
 
   <div class="mb-6">
-    <InterestRate {defaultInterestRate} bind:interestRate />
+    <InterestRate bind:interestRate />
   </div>
 
   <div class="mb-6">
-    <MortgageLength {defaultMortgageLength} bind:mortgageLength />
+    <MortgageLength bind:mortgageLength />
   </div>
 
   <div class="mb-6">

@@ -19,14 +19,11 @@
   let downPaymentPercentage;
 
   if (currentHistory) {
-    console.log('currentHistory', currentHistory);
-
     homePrice = currentHistory.homePrice;
     interestRate = currentHistory.interestRate;
-    mortgageLength = currentHistory.years;
+    mortgageLength = currentHistory.mortgageLength;
     downPaymentPercentage = currentHistory.downPayment;
   } else {
-    console.log('after', currentHistory);
     homePrice = defaultHomePrice;
     interestRate = defaultInterestRate;
     mortgageLength = defaultMortgageLength;
