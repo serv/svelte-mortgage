@@ -32,7 +32,7 @@
   function handleClick() {
     const homePriceNumber =
       typeof homePrice === 'string'
-        ? parseFloat(homePrice.replace(',', ''))
+        ? parseFloat(homePrice.replaceAll(',', ''))
         : homePrice;
 
     let loan = amortize(
