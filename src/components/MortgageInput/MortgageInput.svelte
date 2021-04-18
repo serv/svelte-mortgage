@@ -59,7 +59,7 @@
       prefix="$"
       label="Home Price"
       valueType="currency"
-      options={{ value: defaultHomePrice }}
+      options={{ value: homePrice }}
       bind:inputValue={homePrice}
     />
   </div>

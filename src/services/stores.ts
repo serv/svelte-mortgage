@@ -34,8 +34,28 @@ function createHistory() {
     reset: () => {
       localStorage.setItem('history', []);
       set([]);
+    },
+    get: (id) => {
+      let historyFromLocalStorage = getHistory();
+
+      if (historyFromLocalStorage.length < 1) {
+        return null;
+      }
+
+      if (id === null || id === undefined || id === 0) {
+        if (historyFromLocalStorage.length > 0) {
+          id = historyFromLocalStorage[0].id;
+        }
+      }
+
+      historyFromLocalStorage = historyFromLocalStorage.filter(
+        (e) => e.id === id
+      );
+
+      return historyFromLocalStorage[0];
     }
   };
 }
 
 export const history = createHistory();
+export const currentId = writable(0);

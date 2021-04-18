@@ -2,6 +2,7 @@
   import History from '../History';
   import MortgageInput from '../MortgageInput';
   import config from '../../config';
+  import { history, currentId } from '../../services/stores';
 
   const {
     defaultHomePrice,
@@ -10,10 +11,27 @@
     defaultMortgageLength
   } = config;
 
-  let homePrice: any = defaultHomePrice;
-  let interestRate = defaultInterestRate;
-  let mortgageLength = defaultMortgageLength;
-  let downPaymentPercentage = defaultDownPaymentPercentage;
+  let currentHistory = history.get($currentId);
+
+  let homePrice: any;
+  let interestRate;
+  let mortgageLength;
+  let downPaymentPercentage;
+
+  if (currentHistory) {
+    console.log('currentHistory', currentHistory);
+
+    homePrice = currentHistory.homePrice;
+    interestRate = currentHistory.interestRate;
+    mortgageLength = currentHistory.years;
+    downPaymentPercentage = currentHistory.downPaymentRatio;
+  } else {
+    console.log('after', currentHistory);
+    homePrice = defaultHomePrice;
+    interestRate = defaultInterestRate;
+    mortgageLength = defaultMortgageLength;
+    downPaymentPercentage = defaultDownPaymentPercentage;
+  }
 </script>
 
 <div class="flex h-screen">
