@@ -46,7 +46,7 @@
     const mortgage = new Mortgage(
       loan.amount,
       round(loan.downPaymentRatio * 100, 2),
-      round(loan.interest * 100, 2),
+      round(loan.interest, 2),
       loan.years,
       0,
       0
