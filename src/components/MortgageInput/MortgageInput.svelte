@@ -8,7 +8,7 @@
   import { history } from '../../services/stores';
   import Mortgage from '../../models/Mortgage';
   import * as dayjs from 'dayjs';
-  import { amortize } from 'amortizationjs';
+  import amortize from 'amortizationjs';
 
   import config from '../../config';
   const {
