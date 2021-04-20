@@ -12,7 +12,7 @@
   let ctx = null;
   let chart = null;
   const title = 'Monthly Payment Breakdown';
-
+  let chartOptions = {};
   let data = {
     labels: ['Principle & Interest', 'Home Insurance', 'Property Tax', 'HOA'],
     datasets: [
