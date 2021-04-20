@@ -1,9 +1,17 @@
 <script lang="ts">
   import { onMount, afterUpdate, onDestroy } from 'svelte';
-  import { Chart, ArcElement, DoughnutController } from 'chart.js';
+  import {
+    Chart,
+    Legend,
+    Title,
+    Tooltip,
+    ArcElement,
+    DoughnutController
+  } from 'chart.js';
 
   let ctx = null;
   let chart = null;
+  const title = 'Monthly Payment Breakdown';
 
   let data = {
     labels: ['Principle & Interest', 'Home Insurance', 'Property Tax', 'HOA'],
@@ -23,12 +31,23 @@
   };
 
   onMount(() => {
-    Chart.register(ArcElement, DoughnutController);
+    Chart.register(ArcElement, Legend, Title, Tooltip, DoughnutController);
 
     ctx = document.getElementById('myChart');
     chart = new Chart(ctx, {
       type: 'doughnut',
-      data
+      data,
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: title
+          },
+          legend: {
+            display: true
+          }
+        }
+      }
     });
   });
   afterUpdate(() => {});
