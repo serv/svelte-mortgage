@@ -4,13 +4,14 @@
 
   export let text;
   export let subtext;
+  export let arcs;
 
   text = text ? text : '';
   subtext = subtext ? subtext : '';
 </script>
 
 <div class="relative">
-  <MonthlyBreakdownPieChart />
+  <MonthlyBreakdownPieChart {arcs} />
   <div
     class="absolute top-1/2 left-1/2 text-center"
     style="transform: translate(-50%, -50%);"
