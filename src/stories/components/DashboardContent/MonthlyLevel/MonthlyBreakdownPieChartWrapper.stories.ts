@@ -11,5 +11,5 @@ const Template = ({ ...args }) => ({
   props: args
 });
 
-export const WithNone = Template.bind({});
-WithNone.args = {};
+export const WithText = Template.bind({});
+WithText.args = { text: '$ 1,407', subtext: 'Monthly payment' };
