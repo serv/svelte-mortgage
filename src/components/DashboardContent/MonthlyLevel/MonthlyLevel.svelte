@@ -1,6 +1,7 @@
 <script lang="ts">
   import MonthlyBreakdownPieChartWrapper from './MonthlyBreakdownPieChartWrapper.svelte';
   import MonthlyArc from '../../../models/MonthlyArc';
+  import PaymentItem from './PaymentItem.svelte';
   import config from '../../../config';
 
   const { monthlyArcColors } = config;
@@ -40,7 +41,13 @@
   <div class="flex flex-col">
     <div class="flex-1" />
     <div class="flex flex-1 justify-center flex-col">
-      <div class="flex-1">Principle & Interest: ${principleInterest}</div>
+      <div class="flex-1">
+        <PaymentItem
+          name={'Principle & Interest'}
+          amount={principleInterest}
+          color={monthlyArcColors.principleInterest}
+        />
+      </div>
       <div class="flex-1">Insurance: ${insurance}</div>
       <div class="flex-1">Tax: ${tax}</div>
       <div class="flex-1">HOA: ${hoa}</div>
