@@ -10,5 +10,10 @@ const Template = ({ ...args }) => ({
   props: args
 });
 
-export const WithNone = Template.bind({});
-WithNone.args = {};
+export const WithValues = Template.bind({});
+WithValues.args = {
+  principleInterest: 1500,
+  insurance: 100,
+  tax: 400,
+  hoa: 300
+};

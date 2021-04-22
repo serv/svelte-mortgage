@@ -16,10 +16,10 @@
     class="absolute top-1/2 left-1/2 text-center"
     style="transform: translate(-50%, -50%);"
   >
-    <div class="sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+    <div class="mt-20 text-3xl">
       {text}
     </div>
-    <div class="sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+    <div class="text-sm">
       {subtext}
     </div>
   </div>
