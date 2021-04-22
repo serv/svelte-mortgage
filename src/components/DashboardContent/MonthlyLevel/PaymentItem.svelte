@@ -23,7 +23,7 @@
   </div>
 
   <div class="flex flex-1 justify-end items-center">
-    <div>+</div>
+    <div class="mr-4">+</div>
     <div class="w-36">
       <TextField prefix="$" valueType="currency" options={textFieldOptions} />
     </div>
