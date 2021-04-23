@@ -16,7 +16,7 @@
     class="absolute top-1/2 left-1/2 text-center"
     style="transform: translate(-50%, -50%);"
   >
-    <div class="mt-20 text-3xl">
+    <div class="text-3xl">
       {text}
     </div>
     <div class="text-sm">

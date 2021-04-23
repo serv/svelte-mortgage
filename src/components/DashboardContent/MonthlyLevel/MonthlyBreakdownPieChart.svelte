@@ -43,11 +43,11 @@
       options: {
         plugins: {
           title: {
-            display: true,
+            display: false,
             text: title
           },
           legend: {
-            display: true
+            display: false
           }
         }
       }

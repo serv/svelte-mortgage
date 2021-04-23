@@ -39,8 +39,10 @@
     />
   </div>
   <div class="flex flex-col">
-    <div class="flex-1" />
     <div class="flex flex-1 justify-center flex-col">
+      <div class="flex-1">
+        <h3 class="text-lg font-bold">Monthly Payment Calculation</h3>
+      </div>
       <div class="flex-1">
         <PaymentItem
           name={'Principle & Interest'}
@@ -48,10 +50,22 @@
           color={monthlyArcColors.principleInterest}
         />
       </div>
-      <div class="flex-1">Insurance: ${insurance}</div>
-      <div class="flex-1">Tax: ${tax}</div>
-      <div class="flex-1">HOA: ${hoa}</div>
+      <div class="flex-1">
+        <PaymentItem
+          name={'Insurance'}
+          amount={insurance}
+          color={monthlyArcColors.insurance}
+        />
+      </div>
+      <div class="flex-1">
+        <PaymentItem name={'Tax'} amount={tax} color={monthlyArcColors.tax} />
+      </div>
+      <div class="flex-1 border-b">
+        <PaymentItem name={'HOA'} amount={hoa} color={monthlyArcColors.hoa} />
+      </div>
+      <div class="flex-1 text-right font-bold">
+        Total monthly payment = $ {total}
+      </div>
     </div>
-    <div class="flex-1" />
   </div>
 </div>
