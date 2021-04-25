@@ -9,5 +9,10 @@ export default {
     insurance: 'rgb(154, 48, 186)',
     tax: 'rgb(219, 0, 58)',
     hoa: 'rgb(219, 120, 0)'
+  },
+  monthlyArcAmounts: {
+    insurnace: 75,
+    tax: 200,
+    hoa: 30
   }
 };
