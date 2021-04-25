@@ -2,7 +2,9 @@
   import History from '../History';
   import MortgageInput from '../MortgageInput';
   import config from '../../config';
+  import DashboardContet from '../DashboardContent';
   import { currentHistory } from '../../services/stores';
+  import DashboardContent from '../DashboardContent/DashboardContent.svelte';
 
   const {
     defaultHomePrice,
@@ -10,6 +12,9 @@
     defaultInterestRate,
     defaultMortgageLength
   } = config;
+
+  // TODO: need to calculate monthly
+  let principleInterest = 1500;
 </script>
 
 <div class="flex h-screen">
@@ -47,11 +52,7 @@
   <div class="flex-1 flex flex-col overflow-hidden">
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
       <div class="container mx-auto px-6 py-8">
-        <div
-          class="grid place-items-center h-96 text-gray-500 dark:text-gray-300 text-xl border-4 border-gray-300 border-dashed"
-        >
-          Content
-        </div>
+        <DashboardContent {principleInterest} />
       </div>
     </main>
   </div>
