@@ -3,6 +3,7 @@
   import MonthlyArc from '../../../models/MonthlyArc';
   import PaymentItem from './PaymentItem.svelte';
   import config from '../../../config';
+  import ParseHelper from '../../../utils/parse-helper';
 
   const { monthlyArcColors } = config;
 
@@ -38,11 +39,11 @@
     hoa: any
   ): any {
     principleInterest = principleInterest
-      ? parseInt(principleInterest)
-      : principleInterest;
-    insurance = insurance ? parseInt(insurance) : insurance;
-    tax = tax ? parseInt(tax) : tax;
-    hoa = hoa ? parseInt(hoa) : hoa;
+      ? ParseHelper.parseCurrency(principleInterest)
+      : 0;
+    insurance = insurance ? ParseHelper.parseCurrency(insurance) : 0;
+    tax = tax ? ParseHelper.parseCurrency(tax) : 0;
+    hoa = hoa ? ParseHelper.parseCurrency(hoa) : 0;
 
     return principleInterest + insurance + tax + hoa;
   }
@@ -52,7 +53,7 @@
   <div class="w-80 mr-8">
     <MonthlyBreakdownPieChartWrapper
       {arcs}
-      text={'$ ' + total}
+      text={total}
       subtext={'Monthly payment'}
     />
   </div>
@@ -64,7 +65,7 @@
       <div class="flex-1">
         <PaymentItem
           name={'Principle & Interest'}
-          amount={principleInterest}
+          bind:amount={principleInterest}
           color={monthlyArcColors.principleInterest}
         />
       </div>
