@@ -25,7 +25,12 @@
   <div class="flex flex-1 justify-end items-center">
     <div class="mr-4">+</div>
     <div class="w-36">
-      <TextField prefix="$" valueType="currency" options={textFieldOptions} />
+      <TextField
+        prefix="$"
+        valueType="currency"
+        options={textFieldOptions}
+        bind:inputValue={amount}
+      />
     </div>
   </div>
 </div>

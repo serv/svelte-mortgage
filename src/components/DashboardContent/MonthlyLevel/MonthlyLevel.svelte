@@ -27,7 +27,25 @@
   let hoaArc = new MonthlyArc('HOA', 'hoa', hoa, monthlyArcColors['hoa']);
   let arcs = [principleInterestArc, insuranceArc, taxArc, hoaArc];
 
-  let total = principleInterest + insurance + tax + hoa;
+  $: total = calculateTotal(principleInterest, insurance, tax, hoa);
+
+  // $: total = principleInterest + insurance + tax + hoa;
+
+  function calculateTotal(
+    principleInterest: any,
+    insurance: any,
+    tax: any,
+    hoa: any
+  ): any {
+    principleInterest = principleInterest
+      ? parseInt(principleInterest)
+      : principleInterest;
+    insurance = insurance ? parseInt(insurance) : insurance;
+    tax = tax ? parseInt(tax) : tax;
+    hoa = hoa ? parseInt(hoa) : hoa;
+
+    return principleInterest + insurance + tax + hoa;
+  }
 </script>
 
 <div class="flex">
@@ -53,15 +71,23 @@
       <div class="flex-1">
         <PaymentItem
           name={'Insurance'}
-          amount={insurance}
+          bind:amount={insurance}
           color={monthlyArcColors.insurance}
         />
       </div>
       <div class="flex-1">
-        <PaymentItem name={'Tax'} amount={tax} color={monthlyArcColors.tax} />
+        <PaymentItem
+          name={'Tax'}
+          bind:amount={tax}
+          color={monthlyArcColors.tax}
+        />
       </div>
       <div class="flex-1 border-b">
-        <PaymentItem name={'HOA'} amount={hoa} color={monthlyArcColors.hoa} />
+        <PaymentItem
+          name={'HOA'}
+          bind:amount={hoa}
+          color={monthlyArcColors.hoa}
+        />
       </div>
       <div class="flex-1 text-right font-bold">
         Total monthly payment = $ {total}
