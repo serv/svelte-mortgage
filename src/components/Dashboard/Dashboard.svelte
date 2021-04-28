@@ -32,7 +32,6 @@
     mortgageLength,
     defaultPaymentCountPerYear
   );
-  console.log(loan);
 </script>
 
 <div class="flex h-screen">
@@ -68,7 +67,7 @@
   <div class="flex-1 flex flex-col overflow-hidden">
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
       <div class="container mx-auto px-6 py-8">
-        <DashboardContent {principleInterest} />
+        <DashboardContent {principleInterest} {loan} />
       </div>
     </main>
   </div>
