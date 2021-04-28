@@ -5,16 +5,34 @@
   import DashboardContet from '../DashboardContent';
   import { currentHistory } from '../../services/stores';
   import DashboardContent from '../DashboardContent/DashboardContent.svelte';
+  import amortize from 'amortizationjs';
 
   const {
     defaultHomePrice,
     defaultDownPaymentPercentage,
     defaultInterestRate,
-    defaultMortgageLength
+    defaultMortgageLength,
+    defaultPaymentCountPerYear
   } = config;
 
   // TODO: need to calculate monthly
   let principleInterest = 1500;
+
+  let homePrice = defaultHomePrice;
+  let interestRate = defaultDownPaymentPercentage;
+  let mortgageLength = defaultInterestRate;
+  let downPaymentPercentage = defaultMortgageLength;
+  let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
+
+  // TODO: Need this updated based on changes from the Input
+  let loan = amortize(
+    homePrice,
+    downPaymentAmount,
+    interestRate,
+    mortgageLength,
+    defaultPaymentCountPerYear
+  );
+  console.log(loan);
 </script>
 
 <div class="flex h-screen">
@@ -29,18 +47,16 @@
 
         <div class="mb-8">
           <MortgageInput
-            homePrice={$currentHistory
-              ? $currentHistory.homePrice
-              : defaultHomePrice}
+            homePrice={$currentHistory ? $currentHistory.homePrice : homePrice}
             interestRate={$currentHistory
               ? $currentHistory.interestRate
-              : defaultInterestRate}
+              : interestRate}
             mortgageLength={$currentHistory
               ? $currentHistory.mortgageLength
-              : defaultMortgageLength}
+              : mortgageLength}
             downPaymentPercentage={$currentHistory
               ? $currentHistory.downPayment
-              : defaultDownPaymentPercentage}
+              : downPaymentPercentage}
           />
         </div>
 

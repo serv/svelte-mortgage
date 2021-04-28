@@ -26,6 +26,14 @@
   export let downPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
+  export let loan = amortize(
+    homePrice,
+    downPaymentAmount,
+    interestRate,
+    mortgageLength,
+    defaultPaymentCountPerYear
+  );
+
   // TODO: Loan must be exported for the Dashboard to use it.
   function handleClick() {
     const homePriceNumber =
@@ -33,7 +41,7 @@
         ? parseFloat(homePrice.replaceAll(',', ''))
         : homePrice;
 
-    let loan = amortize(
+    loan = amortize(
       homePriceNumber,
       downPaymentAmount,
       interestRate,
