@@ -1,6 +1,7 @@
 <script lang="ts">
   import MonthlyLevel from './MonthlyLevel';
   import config from '../../config';
+  import AmortizationTable from './AmortizationTable/AmortizationTable.svelte';
   const defaultAmount = config.monthlyArcAmounts;
 
   export let principleInterest;
@@ -13,10 +14,9 @@
   insurance = insurance ? insurance : defaultAmount.insurnace;
   tax = tax ? tax : defaultAmount.tax;
   hoa = hoa ? hoa : defaultAmount.hoa;
-
-  console.log(loan);
 </script>
 
 <div>
   <MonthlyLevel bind:principleInterest {insurance} {tax} {hoa} />
+  <AmortizationTable {loan} />
 </div>
