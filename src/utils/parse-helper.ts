@@ -9,8 +9,6 @@ export default class ParseHelper {
       return input;
     }
 
-    console.log('2,', input);
-
     return parseFloat(input.replace(/,/g, ''));
   }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PaymentItem from '../MonthlyLevel/PaymentItem.svelte';
+  import ParseHelper from '../../../utils/parse-helper';
 
   export let loan;
 </script>
@@ -20,11 +20,21 @@
       {#each loan.payments as payment, i}
         <tr>
           <td class="border px-4 py-2">{payment.id}</td>
-          <td class="border px-4 py-2">{payment.principlePayment}</td>
-          <td class="border px-4 py-2">{payment.interestPayment}</td>
-          <td class="border px-4 py-2">{payment.totalPayment}</td>
-          <td class="border px-4 py-2">{payment.principleRemaining}</td>
-          <td class="border px-4 py-2">{payment.interestCumulative}</td>
+          <td class="border px-4 py-2"
+            >$ {ParseHelper.formatCurrency(payment.principlePayment)}</td
+          >
+          <td class="border px-4 py-2"
+            >$ {ParseHelper.formatCurrency(payment.interestPayment)}</td
+          >
+          <td class="border px-4 py-2"
+            >$ {ParseHelper.formatCurrency(payment.totalPayment)}</td
+          >
+          <td class="border px-4 py-2"
+            >$ {ParseHelper.formatCurrency(payment.principleRemaining)}</td
+          >
+          <td class="border px-4 py-2"
+            >$ {ParseHelper.formatCurrency(payment.interestCumulative)}</td
+          >
         </tr>
       {/each}
     {/if}
