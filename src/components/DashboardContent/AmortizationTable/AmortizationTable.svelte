@@ -4,27 +4,27 @@
   export let loan;
 </script>
 
-<table>
+<table class="table-auto">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Principle</th>
-      <th>Interest</th>
-      <th>Monthly Payment</th>
-      <th>Principle Remaining</th>
-      <th>Cumulative Interest</th>
+      <th class="px-4 py-2">ID</th>
+      <th class="px-4 py-2">Principle</th>
+      <th class="px-4 py-2">Interest</th>
+      <th class="px-4 py-2">Monthly Payment</th>
+      <th class="px-4 py-2">Principle Remaining</th>
+      <th class="px-4 py-2">Cumulative Interest</th>
     </tr>
   </thead>
   <tbody>
     {#if loan}
       {#each loan.payments as payment, i}
         <tr>
-          <td>{payment.id}</td>
-          <td>{payment.principlePayment}</td>
-          <td>{payment.interestPayment}</td>
-          <td>{payment.totalPayment}</td>
-          <td>{payment.principleRemaining}</td>
-          <td>{payment.interestCumulative}</td>
+          <td class="border px-4 py-2">{payment.id}</td>
+          <td class="border px-4 py-2">{payment.principlePayment}</td>
+          <td class="border px-4 py-2">{payment.interestPayment}</td>
+          <td class="border px-4 py-2">{payment.totalPayment}</td>
+          <td class="border px-4 py-2">{payment.principleRemaining}</td>
+          <td class="border px-4 py-2">{payment.interestCumulative}</td>
         </tr>
       {/each}
     {/if}
