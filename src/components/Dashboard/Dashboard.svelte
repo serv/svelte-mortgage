@@ -2,14 +2,38 @@
   import History from '../History';
   import MortgageInput from '../MortgageInput';
   import config from '../../config';
+  import DashboardContet from '../DashboardContent';
   import { currentHistory } from '../../services/stores';
+  import DashboardContent from '../DashboardContent/DashboardContent.svelte';
+  import amortize from 'amortizationjs';
 
   const {
     defaultHomePrice,
     defaultDownPaymentPercentage,
     defaultInterestRate,
-    defaultMortgageLength
+    defaultMortgageLength,
+    defaultPaymentCountPerYear
   } = config;
+
+  console.log(config);
+
+  // TODO: need to calculate monthly
+  let principleInterest = 1500;
+
+  let homePrice = defaultHomePrice;
+  let interestRate = defaultInterestRate;
+  let mortgageLength = defaultMortgageLength;
+  let downPaymentPercentage = defaultDownPaymentPercentage;
+  let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
+
+  // TODO: Need this updated based on changes from the Input
+  let loan = amortize(
+    homePrice,
+    downPaymentAmount,
+    interestRate,
+    mortgageLength,
+    defaultPaymentCountPerYear
+  );
 </script>
 
 <div class="flex h-screen">
@@ -24,18 +48,16 @@
 
         <div class="mb-8">
           <MortgageInput
-            homePrice={$currentHistory
-              ? $currentHistory.homePrice
-              : defaultHomePrice}
+            homePrice={$currentHistory ? $currentHistory.homePrice : homePrice}
             interestRate={$currentHistory
               ? $currentHistory.interestRate
-              : defaultInterestRate}
+              : interestRate}
             mortgageLength={$currentHistory
               ? $currentHistory.mortgageLength
-              : defaultMortgageLength}
+              : mortgageLength}
             downPaymentPercentage={$currentHistory
               ? $currentHistory.downPayment
-              : defaultDownPaymentPercentage}
+              : downPaymentPercentage}
           />
         </div>
 
@@ -47,11 +69,7 @@
   <div class="flex-1 flex flex-col overflow-hidden">
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
       <div class="container mx-auto px-6 py-8">
-        <div
-          class="grid place-items-center h-96 text-gray-500 dark:text-gray-300 text-xl border-4 border-gray-300 border-dashed"
-        >
-          Content
-        </div>
+        <DashboardContent {principleInterest} {loan} />
       </div>
     </main>
   </div>
