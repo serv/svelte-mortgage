@@ -15,11 +15,6 @@
     defaultPaymentCountPerYear
   } = config;
 
-  console.log(config);
-
-  // TODO: need to calculate monthly
-  let principleInterest = 1500;
-
   let homePrice = defaultHomePrice;
   let interestRate = defaultInterestRate;
   let mortgageLength = defaultMortgageLength;
@@ -34,6 +29,9 @@
     mortgageLength,
     defaultPaymentCountPerYear
   );
+
+  $: principleInterest =
+    loan && loan.monthlyPayment ? loan.monthlyPayment : 1398.45;
 </script>
 
 <div class="flex h-screen">
@@ -69,7 +67,7 @@
   <div class="flex-1 flex flex-col overflow-hidden">
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
       <div class="container mx-auto px-6 py-8">
-        <DashboardContent {principleInterest} {loan} />
+        <DashboardContent bind:principleInterest {loan} />
       </div>
     </main>
   </div>
