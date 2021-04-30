@@ -15,13 +15,15 @@
     defaultPaymentCountPerYear
   } = config;
 
+  console.log(config);
+
   // TODO: need to calculate monthly
   let principleInterest = 1500;
 
   let homePrice = defaultHomePrice;
-  let interestRate = defaultDownPaymentPercentage;
-  let mortgageLength = defaultInterestRate;
-  let downPaymentPercentage = defaultMortgageLength;
+  let interestRate = defaultInterestRate;
+  let mortgageLength = defaultMortgageLength;
+  let downPaymentPercentage = defaultDownPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   // TODO: Need this updated based on changes from the Input

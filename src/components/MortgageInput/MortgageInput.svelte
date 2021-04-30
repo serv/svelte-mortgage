@@ -24,6 +24,14 @@
   export let interestRate;
   export let mortgageLength;
   export let downPaymentPercentage;
+
+  homePrice = homePrice ? homePrice : defaultHomePrice;
+  interestRate = interestRate ? interestRate : defaultInterestRate;
+  mortgageLength = mortgageLength ? mortgageLength : defaultMortgageLength;
+  downPaymentPercentage = downPaymentPercentage
+    ? downPaymentPercentage
+    : defaultDownPaymentPercentage;
+
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   export let loan = amortize(
