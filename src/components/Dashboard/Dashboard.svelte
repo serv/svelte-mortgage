@@ -2,9 +2,8 @@
   import History from '../History';
   import MortgageInput from '../MortgageInput';
   import config from '../../config';
-  import DashboardContet from '../DashboardContent';
+  import DashboardContent from '../DashboardContent';
   import { currentHistory } from '../../services/stores';
-  import DashboardContent from '../DashboardContent/DashboardContent.svelte';
   import amortize from 'amortizationjs';
 
   const {
@@ -30,7 +29,7 @@
     defaultPaymentCountPerYear
   );
 
-  $: principleInterest =
+  let principleInterest =
     loan && loan.monthlyPayment ? loan.monthlyPayment : 1398.45;
 </script>
 

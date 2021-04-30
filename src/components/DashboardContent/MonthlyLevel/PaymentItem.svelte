@@ -5,11 +5,14 @@
   export let name: string;
   export let color: string;
   export let amount: number;
+  export let options;
 
   name = name ? name : '';
   amount = amount ? amount : 0;
+  options = options ? options : {};
 
-  let textFieldOptions = { value: amount };
+  options.value = amount;
+  console.log('options', options);
 </script>
 
 <div class="flex items-center">
@@ -28,7 +31,7 @@
       <TextField
         prefix="$"
         valueType="currency"
-        options={textFieldOptions}
+        {options}
         bind:inputValue={amount}
       />
     </div>

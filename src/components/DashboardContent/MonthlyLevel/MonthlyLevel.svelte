@@ -67,6 +67,7 @@
           name={'Principle & Interest'}
           bind:amount={principleInterest}
           color={monthlyArcColors.principleInterest}
+          options={{ readOnly: true }}
         />
       </div>
       <div class="flex-1">
