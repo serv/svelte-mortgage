@@ -59,4 +59,4 @@
   ];
 </script>
 
-<Select label="Month" selectOptions={months} {options} />
+<Select label="Starting Month" selectOptions={months} {options} />

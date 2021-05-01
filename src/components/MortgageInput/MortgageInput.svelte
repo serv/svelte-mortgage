@@ -92,15 +92,17 @@
     <InterestRate bind:interestRate />
   </div>
 
-  <div class="mb-6">
-    <MortgageLength bind:mortgageLength />
-  </div>
+  <div class="flex mb-6 justify-between">
+    <div>
+      <MortgageLength bind:mortgageLength />
+    </div>
 
-  <div class="mb-6">
-    <MortgageStartMonthYear
-      defaultMonth={dayjs().month() + 1}
-      defaultYear={dayjs().year()}
-    />
+    <div class="w-72">
+      <MortgageStartMonthYear
+        defaultMonth={dayjs().month() + 1}
+        defaultYear={dayjs().year()}
+      />
+    </div>
   </div>
 
   <div class="flex justify-center">
