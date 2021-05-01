@@ -1,13 +1,22 @@
 <script lang="ts">
   import ParseHelper from '../../../utils/parse-helper';
+  import * as dayjs from 'dayjs';
 
   export let loan;
+  export let startMonth;
+  export let startYear;
+  let startDate = dayjs().year(startYear).month(startMonth).add(0, 'month');
+
+  function dateForRow(i, startMonth, startYear) {
+    return startDate.add(i, 'month').format('MMM D, YYYY');
+  }
 </script>
 
 <table class="table-auto">
   <thead>
     <tr>
       <th class="px-4 py-2">ID</th>
+      <th class="px-4 py-2">Date</th>
       <th class="px-4 py-2">Principle</th>
       <th class="px-4 py-2">Interest</th>
       <th class="px-4 py-2">Monthly Payment</th>
@@ -18,8 +27,11 @@
   <tbody>
     {#if loan}
       {#each loan.payments as payment, i}
-        <tr>
+        <tr data-id={payment.id}>
           <td class="border px-4 py-2">{payment.id}</td>
+          <td class="border px-4 py-2"
+            >{dateForRow(i, startMonth, startYear)}</td
+          >
           <td class="border px-4 py-2"
             >$ {ParseHelper.formatCurrency(payment.principlePayment)}</td
           >

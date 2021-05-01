@@ -33,3 +33,6 @@ const loan = amortize(
 
 export const WithLoan = Template.bind({});
 WithLoan.args = { loan };
+
+export const WithMonthYear = Template.bind({});
+WithMonthYear.args = { loan, startMonth: 5, startYear: 2021 };
