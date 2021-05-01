@@ -4,4 +4,8 @@
   export let defaultYear;
 </script>
 
-<TextField label="Year" valueType="year" options={{ value: defaultYear }} />
+<TextField
+  label="Starting Year"
+  valueType="year"
+  options={{ value: defaultYear }}
+/>

@@ -12,11 +12,11 @@
   ];
 </script>
 
-<div class="mortgage-length">
+<div class="mortgage-length w-80">
   <div class="mb-2">Mortgage Length</div>
   <div class="flex">
-    <div class="mr-4">
-      <TextField options={{ value: mortgageLength }} />
+    <div class="mr-4 w-full">
+      <TextField prefix="Year" options={{ value: mortgageLength }} />
     </div>
 
     <ButtonGroup {content} bind:inputValue={mortgageLength} />
