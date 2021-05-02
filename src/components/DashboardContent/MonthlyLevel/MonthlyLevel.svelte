@@ -12,12 +12,6 @@
   export let tax: number;
   export let hoa: number;
 
-  let principleInterestArc = new MonthlyArc(
-    'Principle & Interest',
-    'principleInterest',
-    principleInterest,
-    monthlyArcColors['principleInterest']
-  );
   let insuranceArc = new MonthlyArc(
     'Insurance',
     'insurance',
@@ -26,7 +20,6 @@
   );
   let taxArc = new MonthlyArc('Tax', 'tax', tax, monthlyArcColors['tax']);
   let hoaArc = new MonthlyArc('HOA', 'hoa', hoa, monthlyArcColors['hoa']);
-  let arcs = [principleInterestArc, insuranceArc, taxArc, hoaArc];
 
   $: total = calculateTotal(principleInterest, insurance, tax, hoa);
 
@@ -47,12 +40,26 @@
 
     return principleInterest + insurance + tax + hoa;
   }
+
+  $: getPrincipleInterestArc = function () {
+    principleInterest = principleInterest;
+    return new MonthlyArc(
+      'Principle & Interest',
+      'principleInterest',
+      principleInterest,
+      monthlyArcColors['principleInterest']
+    );
+  };
+  $: getArcs = function () {
+    return [getPrincipleInterestArc(), insuranceArc, taxArc, hoaArc];
+  };
 </script>
 
 <div class="flex">
+  {JSON.stringify(getArcs())}
   <div class="w-80 mr-8">
     <MonthlyBreakdownPieChartWrapper
-      {arcs}
+      arcs={getArcs()}
       text={total}
       subtext={'Monthly payment'}
     />
