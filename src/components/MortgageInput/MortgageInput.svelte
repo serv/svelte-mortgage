@@ -5,7 +5,7 @@
   import InterestRate from '../InterestRate';
   import TextField from '../TextField';
   import DownPayment from '../DownPayment';
-  import { history } from '../../services/stores';
+  import { currentId, history } from '../../services/stores';
   import Mortgage from '../../models/Mortgage';
   import * as dayjs from 'dayjs';
   import amortize from 'amortizationjs';
@@ -42,7 +42,6 @@
     defaultPaymentCountPerYear
   );
 
-  // TODO: Loan must be exported for the Dashboard to use it.
   function handleClick() {
     const homePriceNumber =
       typeof homePrice === 'string'
@@ -66,6 +65,7 @@
       0
     );
     history.add(mortgage);
+    currentId.set(mortgage.id);
   }
 </script>
 
