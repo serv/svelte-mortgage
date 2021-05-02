@@ -28,14 +28,6 @@
     : defaultDownPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
-  // TODO: Need this updated based on changes from the Input
-  $: loan = amortize(
-    homePrice,
-    downPaymentAmount,
-    interestRate,
-    mortgageLength,
-    defaultPaymentCountPerYear
-  );
   $: getLoan = function () {
     homePrice = $currentHistory ? $currentHistory.homePrice : defaultHomePrice;
     interestRate = $currentHistory
