@@ -14,10 +14,18 @@
     defaultPaymentCountPerYear
   } = config;
 
-  let homePrice = defaultHomePrice;
-  let interestRate = defaultInterestRate;
-  let mortgageLength = defaultMortgageLength;
-  let downPaymentPercentage = defaultDownPaymentPercentage;
+  let homePrice = $currentHistory
+    ? $currentHistory.homePrice
+    : defaultHomePrice;
+  let interestRate = $currentHistory
+    ? $currentHistory.interestRate
+    : defaultInterestRate;
+  let mortgageLength = $currentHistory
+    ? $currentHistory.mortgageLength
+    : defaultMortgageLength;
+  let downPaymentPercentage = $currentHistory
+    ? $currentHistory.downPayment
+    : defaultDownPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   // TODO: Need this updated based on changes from the Input
