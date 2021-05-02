@@ -4,13 +4,12 @@
   import AmortizationTable from './AmortizationTable/AmortizationTable.svelte';
   const defaultAmount = config.monthlyArcAmounts;
 
-  export let principleInterest;
   export let insurance;
   export let tax;
   export let hoa;
   export let loan;
 
-  principleInterest = principleInterest ? principleInterest : 0;
+  $: principleInterest = loan ? loan.monthlyPayment : 0;
   insurance = insurance ? insurance : defaultAmount.insurnace;
   tax = tax ? tax : defaultAmount.tax;
   hoa = hoa ? hoa : defaultAmount.hoa;

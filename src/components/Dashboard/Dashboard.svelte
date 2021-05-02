@@ -29,16 +29,33 @@
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
 
   // TODO: Need this updated based on changes from the Input
-  let loan = amortize(
+  $: loan = amortize(
     homePrice,
     downPaymentAmount,
     interestRate,
     mortgageLength,
     defaultPaymentCountPerYear
   );
-
-  let principleInterest =
-    loan && loan.monthlyPayment ? loan.monthlyPayment : 1398.45;
+  $: getLoan = function () {
+    homePrice = $currentHistory ? $currentHistory.homePrice : defaultHomePrice;
+    interestRate = $currentHistory
+      ? $currentHistory.interestRate
+      : defaultInterestRate;
+    mortgageLength = $currentHistory
+      ? $currentHistory.mortgageLength
+      : defaultMortgageLength;
+    downPaymentPercentage = $currentHistory
+      ? $currentHistory.downPayment
+      : defaultDownPaymentPercentage;
+    downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
+    return amortize(
+      homePrice,
+      downPaymentAmount,
+      interestRate,
+      mortgageLength,
+      defaultPaymentCountPerYear
+    );
+  };
 
   let sidebarOpened: boolean = true;
 
@@ -110,7 +127,7 @@
   <div class="flex-1 flex flex-col overflow-hidden">
     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
       <div class="container mx-auto px-6 py-8">
-        <DashboardContent bind:principleInterest {loan} />
+        <DashboardContent loan={getLoan()} />
       </div>
     </main>
   </div>
