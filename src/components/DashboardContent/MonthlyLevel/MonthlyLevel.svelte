@@ -56,7 +56,6 @@
 </script>
 
 <div class="flex">
-  {JSON.stringify(getArcs())}
   <div class="w-80 mr-8">
     <MonthlyBreakdownPieChartWrapper
       arcs={getArcs()}
