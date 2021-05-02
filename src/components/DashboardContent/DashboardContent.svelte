@@ -17,7 +17,7 @@
 
 <div>
   <div class="mb-12 px-10 py-6 bg-white rounded-lg shadow-md">
-    <MonthlyLevel bind:principleInterest {insurance} {tax} {hoa} />
+    <MonthlyLevel {principleInterest} {insurance} {tax} {hoa} />
   </div>
   <div class="px-10 py-6 bg-white rounded-lg shadow-md">
     <AmortizationTable {loan} />
