@@ -12,7 +12,6 @@
   options = options ? options : {};
 
   options.value = amount;
-  console.log('options', options);
 </script>
 
 <div class="flex items-center">

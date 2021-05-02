@@ -3,7 +3,7 @@
   import MortgageInput from '../MortgageInput';
   import config from '../../config';
   import DashboardContent from '../DashboardContent';
-  import { currentHistory } from '../../services/stores';
+  import { currentHistory, history } from '../../services/stores';
   import amortize from 'amortizationjs';
 
   const {

@@ -53,12 +53,24 @@ function createHistory() {
       );
 
       return historyFromLocalStorage[0];
+    },
+    latest: () => {
+      let historyFromLocalStorage = getHistory();
+
+      if (historyFromLocalStorage.length < 1) {
+        return null;
+      }
+
+      return historyFromLocalStorage[0];
     }
   };
 }
 
 export const history = createHistory();
-export const currentId = writable(0);
+
+const latest = history.latest();
+
+export const currentId = writable(latest ? latest.id : 0);
 export const currentHistory = derived(currentId, ($currentId) => {
   let historyFromLocalStorage = getHistory();
 

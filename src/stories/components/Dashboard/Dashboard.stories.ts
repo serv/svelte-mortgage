@@ -18,7 +18,7 @@ for (let i = 0; i < 7; i++) {
   let obj = objFactory();
   many.push(obj);
 }
-localStorage.setItem('history', JSON.stringify(many));
+// localStorage.setItem('history', JSON.stringify(many));
 
 function objFactory() {
   const homePrice = _.random(100_000, 2_000_000);
