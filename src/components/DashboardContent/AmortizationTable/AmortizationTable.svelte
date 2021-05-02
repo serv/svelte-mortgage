@@ -5,6 +5,10 @@
   export let loan;
   export let startMonth;
   export let startYear;
+
+  startMonth = startMonth ? startMonth : dayjs().month();
+  startYear = startYear ? startYear : dayjs().year();
+
   let startDate = dayjs().year(startYear).month(startMonth).add(0, 'month');
 
   function dateForRow(i, startMonth, startYear) {
