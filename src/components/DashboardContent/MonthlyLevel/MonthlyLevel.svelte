@@ -12,15 +12,6 @@
   export let tax: number;
   export let hoa: number;
 
-  let insuranceArc = new MonthlyArc(
-    'Insurance',
-    'insurance',
-    insurance,
-    monthlyArcColors['insurance']
-  );
-  let taxArc = new MonthlyArc('Tax', 'tax', tax, monthlyArcColors['tax']);
-  let hoaArc = new MonthlyArc('HOA', 'hoa', hoa, monthlyArcColors['hoa']);
-
   $: total = calculateTotal(principleInterest, insurance, tax, hoa);
 
   // $: total = principleInterest + insurance + tax + hoa;
@@ -50,8 +41,30 @@
       monthlyArcColors['principleInterest']
     );
   };
+  $: getInsuranceArc = function () {
+    insurance = insurance;
+    return new MonthlyArc(
+      'Insurance',
+      'insurance',
+      insurance,
+      monthlyArcColors['insurance']
+    );
+  };
+  $: getTaxArc = function () {
+    tax = tax;
+    return new MonthlyArc('Tax', 'tax', tax, monthlyArcColors['tax']);
+  };
+  $: getHoaArc = function () {
+    hoa = hoa;
+    return new MonthlyArc('HOA', 'hoa', hoa, monthlyArcColors['hoa']);
+  };
   $: getArcs = function () {
-    return [getPrincipleInterestArc(), insuranceArc, taxArc, hoaArc];
+    return [
+      getPrincipleInterestArc(),
+      getInsuranceArc(),
+      getTaxArc(),
+      getHoaArc()
+    ];
   };
 </script>
 
