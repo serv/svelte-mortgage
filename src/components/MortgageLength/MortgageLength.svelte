@@ -12,7 +12,7 @@
   ];
 </script>
 
-<div class="mortgage-length">
+<div class="mortgage-length md:w-96">
   <div class="mb-2">Mortgage Length</div>
   <div class="flex flex-col md:flex-row">
     <div class="mr-4 w-full flex-1 mb-2 md:mb-0">

@@ -11,7 +11,7 @@
     <MonthSelect {defaultMonth} />
   </div>
 
-  <div class="w-full">
+  <div class="w-24">
     <YearTextField {defaultYear} />
   </div>
 </div>
