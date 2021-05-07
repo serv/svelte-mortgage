@@ -1,48 +1,66 @@
 <script lang="ts">
-  import Rows from './Rows.svelte';
-  import { history } from '../../services/stores';
+  import { history, currentId } from '../../services/stores';
   import Button from '../Button';
 
   let baseClass = 'max-h-64 mb-4';
-  $: {
-    if ($history.length > 0) {
-      baseClass = 'max-h-64 mb-4 overflow-y-scroll';
-    } else {
-      baseClass = 'max-h-64 mb-4';
-    }
-  }
 
   function handleReset() {
     history.reset();
+  }
+
+  function onDelete(e) {
+    const id = e.target.getAttribute('data-id');
+
+    history.remove(id);
+  }
+
+  function onSelect(e) {
+    const id = e.target.getAttribute('data-id');
+
+    currentId.set(id);
   }
 </script>
 
 <div class="mb-10">
   <div class={baseClass}>
-    {#if $history.length > 0}
-      <div class="flex flex-row max-w-max border-l border-r border-t">
-        <div class="w-40 border-r pl-2">Home Price</div>
-        <div class="w-32 border-r pl-2">Down Payment</div>
-        <div class="w-32 border-r pl-2">Interest Rate</div>
-        <div class="w-36 border-r pl-2">Mortgage Length</div>
-        <div class="w-16 pl-2">Delete</div>
-      </div>
-    {:else}
-      <div class="flex flex-row max-w-max border">
-        <div class="w-40 border-r pl-2">Home Price</div>
-        <div class="w-32 border-r pl-2">Down Payment</div>
-        <div class="w-32 border-r pl-2">Interest Rate</div>
-        <div class="w-36 border-r pl-2">Mortgage Length</div>
-        <div class="w-16 pl-2">Delete</div>
-      </div>
-      <div class="flex w-full border-l border-r border-b justify-center py-6">
-        No result
-      </div>
-    {/if}
-
-    {#if $history.length > 0}
-      <Rows content={$history} />
-    {/if}
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Home Price</th>
+          <th class="px-4 py-2">Down Payment</th>
+          <th class="px-4 py-2">Interest Rate</th>
+          <th class="px-4 py-2">Mortgage Length</th>
+          <th class="px-4 py-2">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each $history as row}
+          <tr data-id={row.id}>
+            <td class="border px-4 py-2">
+              <div
+                on:click={onSelect}
+                data-id={row.id}
+                class="cursor-pointer w-max text-blue-600 hover:underline"
+              >
+                $ {row.homePrice}
+              </div>
+            </td>
+            <td class="border px-4 py-2">{row.downPayment}</td>
+            <td class="border px-4 py-2">{row.interestRate}</td>
+            <td class="border px-4 py-2">{row.mortgageLength}</td>
+            <td class="border px-4 py-2">
+              <div
+                data-id={row.id}
+                on:click={onDelete}
+                class="w-max cursor-pointer"
+              >
+                ❌
+              </div>
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
   </div>
 
   <div class="flex justify-center">
