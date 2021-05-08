@@ -64,7 +64,7 @@
 </script>
 
 <div class="flex h-screen">
-  <div class={overlayClass} />
+  <div on:click={closeSidebar} class={overlayClass} />
 
   {#if sidebarOpened}
     <div
