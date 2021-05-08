@@ -50,6 +50,9 @@
   };
 
   let sidebarOpened: boolean = true;
+  $: overlayClass = sidebarOpened
+    ? 'fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden block'
+    : 'fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden hidden';
 
   function closeSidebar() {
     sidebarOpened = false;
@@ -61,6 +64,8 @@
 </script>
 
 <div class="flex h-screen">
+  <div class={overlayClass} />
+
   {#if sidebarOpened}
     <div
       class="fixed z-30 inset-y-0 left-0 w-auto bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 pr-4"
@@ -106,12 +111,14 @@
   <div class="flex-1 flex flex-col overflow-hidden">
     <header class="flex justify-between items-center p-6">
       <div class="flex items-center space-x-4 lg:space-x-0">
-        <div
-          on:click={openSidebar}
-          class="border border-gray-200 bg-gray-100 text-center px-2 py-1 cursor-pointer hover:border-gray-500 hover:bg-gray-200"
-        >
-          >>
-        </div>
+        {#if !sidebarOpened}
+          <div
+            on:click={openSidebar}
+            class="border border-gray-200 bg-gray-100 text-center px-2 py-1 cursor-pointer hover:border-gray-500 hover:bg-gray-200"
+          >
+            >>
+          </div>
+        {/if}
         <div>
           <h1 class="text-2xl font-medium text-gray-800">Overview</h1>
         </div>
