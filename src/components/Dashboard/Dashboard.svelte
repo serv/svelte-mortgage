@@ -108,13 +108,13 @@
     </div>
   {/if}
 
-  <div class="flex-1 flex flex-col overflow-hidden">
+  <div class="flex-1 flex flex-col overflow-hidden bg-gray-100">
     <header class="flex justify-between items-center p-6">
       <div class="flex items-center space-x-4 lg:space-x-0">
         {#if !sidebarOpened}
           <div
             on:click={openSidebar}
-            class="border border-gray-200 bg-gray-100 text-center px-2 py-1 cursor-pointer hover:border-gray-500 hover:bg-gray-200"
+            class="text-center px-2 py-1 cursor-pointer hover:bg-gray-200"
           >
             >>
           </div>
@@ -125,7 +125,7 @@
       </div>
     </header>
 
-    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+    <main class="flex-1 overflow-x-hidden overflow-y-auto">
       <div class="container mx-auto px-6 py-8">
         <DashboardContent loan={getLoan()} />
       </div>
