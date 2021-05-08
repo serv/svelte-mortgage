@@ -63,7 +63,7 @@
 <div class="flex h-screen">
   {#if sidebarOpened}
     <div
-      class="fixed z-30 inset-y-0 left-0 w-auto transform bg-white dark:bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 -translate-x-full ease-in pr-4"
+      class="fixed z-30 inset-y-0 left-0 w-auto bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 -translate-x-full pr-4"
     >
       <div class="flex justify-end">
         <div
@@ -103,7 +103,7 @@
     </div>
   {:else}
     <div
-      class="fixed z-30 inset-y-0 left-0 w-auto transform bg-white dark:bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 -translate-x-full ease-in pr-4"
+      class="fixed z-30 inset-y-0 left-0 w-auto bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 -translate-x-full pr-4"
     >
       <div class="flex justify-end">
         <div
