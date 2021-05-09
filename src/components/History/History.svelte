@@ -27,9 +27,9 @@
       <thead>
         <tr>
           <th class="px-4 py-2">Home Price</th>
-          <th class="px-4 py-2">Down Payment</th>
-          <th class="px-4 py-2">Interest Rate</th>
-          <th class="px-4 py-2">Mortgage Length</th>
+          <th class="px-4 py-2 md:block hidden">Down Payment</th>
+          <th class="px-4 py-2 md:block hidden">Interest Rate</th>
+          <th class="px-4 py-2 md:block hidden">Mortgage Length</th>
           <th class="px-4 py-2">Delete</th>
         </tr>
       </thead>
@@ -45,9 +45,11 @@
                 $ {row.homePrice}
               </div>
             </td>
-            <td class="border px-4 py-2">{row.downPayment}</td>
-            <td class="border px-4 py-2">{row.interestRate}</td>
-            <td class="border px-4 py-2">{row.mortgageLength}</td>
+            <td class="border px-4 py-2 md:block hidden">{row.downPayment}</td>
+            <td class="border px-4 py-2 md:block hidden">{row.interestRate}</td>
+            <td class="border px-4 py-2 md:block hidden"
+              >{row.mortgageLength}</td
+            >
             <td class="border px-4 py-2">
               <div
                 data-id={row.id}
