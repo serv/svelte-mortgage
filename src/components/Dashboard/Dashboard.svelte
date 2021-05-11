@@ -5,7 +5,6 @@
   import DashboardContent from '../DashboardContent';
   import { currentHistory } from '../../services/stores';
   import amortize from 'amortizationjs';
-
   const {
     defaultHomePrice,
     defaultDownPaymentPercentage,
@@ -13,7 +12,6 @@
     defaultMortgageLength,
     defaultPaymentCountPerYear
   } = config;
-
   let homePrice = $currentHistory
     ? $currentHistory.homePrice
     : defaultHomePrice;
@@ -27,7 +25,6 @@
     ? $currentHistory.downPayment
     : defaultDownPaymentPercentage;
   let downPaymentAmount = (homePrice * downPaymentPercentage) / 100;
-
   $: getLoan = function () {
     homePrice = $currentHistory ? $currentHistory.homePrice : defaultHomePrice;
     interestRate = $currentHistory
@@ -48,16 +45,13 @@
       defaultPaymentCountPerYear
     );
   };
-
   let sidebarOpened: boolean = true;
   $: overlayClass = sidebarOpened
     ? 'fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden block'
     : 'fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden hidden';
-
   function closeSidebar() {
     sidebarOpened = false;
   }
-
   function openSidebar() {
     sidebarOpened = true;
   }
