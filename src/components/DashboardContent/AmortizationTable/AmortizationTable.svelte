@@ -16,7 +16,7 @@
   }
 </script>
 
-<div class="w-auto h-96 overflow-auto">
+<div class="h-96 overflow-auto">
   <table class="table-auto">
     <thead>
       <tr>
