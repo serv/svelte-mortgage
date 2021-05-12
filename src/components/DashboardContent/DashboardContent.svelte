@@ -19,7 +19,7 @@
   <div class="mb-12 px-10 py-6 bg-white rounded-lg shadow-md">
     <MonthlyLevel {principleInterest} {insurance} {tax} {hoa} />
   </div>
-  <div class="px-10 py-6 bg-white rounded-lg shadow-md">
+  <div class="py-6 md:px-10 bg-white rounded-lg shadow-md">
     <AmortizationTable {loan} />
   </div>
 </div>
