@@ -11,7 +11,7 @@
   subtext = subtext ? subtext : '';
 </script>
 
-<div class="relative">
+<div class="relative md:block hidden">
   <MonthlyBreakdownPieChart {arcs} />
   <div
     class="absolute top-1/2 left-1/2 text-center"

@@ -27,9 +27,9 @@
       <thead>
         <tr>
           <th class="px-4 py-2">Home Price</th>
-          <th class="px-4 py-2 lg:block hidden">Down Payment</th>
-          <th class="px-4 py-2 lg:block hidden">Interest Rate</th>
-          <th class="px-4 py-2 lg:block hidden">Mortgage Length</th>
+          <th class="px-4 py-2 lg:table-cell hidden">Down Payment</th>
+          <th class="px-4 py-2 lg:table-cell hidden">Interest Rate</th>
+          <th class="px-4 py-2 lg:table-cell hidden">Mortgage Length</th>
           <th class="px-4 py-2">Delete</th>
         </tr>
       </thead>
@@ -45,9 +45,13 @@
                 $ {row.homePrice}
               </div>
             </td>
-            <td class="border px-4 py-2 lg:block hidden">{row.downPayment}</td>
-            <td class="border px-4 py-2 lg:block hidden">{row.interestRate}</td>
-            <td class="border px-4 py-2 lg:block hidden"
+            <td class="border px-4 py-2 lg:table-cell hidden"
+              >{row.downPayment}</td
+            >
+            <td class="border px-4 py-2 lg:table-cell hidden"
+              >{row.interestRate}</td
+            >
+            <td class="border px-4 py-2 lg:table-cell hidden"
               >{row.mortgageLength}</td
             >
             <td class="border px-4 py-2">

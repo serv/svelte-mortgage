@@ -69,14 +69,14 @@
 </script>
 
 <div class="flex">
-  <div class="w-80 mr-8">
+  <div class="w-80 md:mr-8 lg:mx-24 hidden md:flex">
     <MonthlyBreakdownPieChartWrapper
       arcs={getArcs()}
       text={total}
       subtext={'Monthly payment'}
     />
   </div>
-  <div class="flex flex-col w-96">
+  <div class="flex flex-col w-full">
     <div class="flex flex-1 justify-center flex-col">
       <div class="flex-1">
         <h3 class="text-lg font-bold">Monthly Payment Calculation</h3>

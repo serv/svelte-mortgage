@@ -16,7 +16,7 @@
 
 <div class="flex items-center">
   <div class="flex flex-1 items-center">
-    <div class="mr-4">
+    <div class="mr-4 md:block hidden">
       <ColorLegend {color} />
     </div>
     <div>
