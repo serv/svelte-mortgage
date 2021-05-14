@@ -16,7 +16,7 @@
 </script>
 
 <div>
-  <div class="mb-12 px-10 py-6 bg-white rounded-lg shadow-md">
+  <div class="mb-12 px-2 md:px-4 lg:px-10 py-6 bg-white rounded-lg shadow-md">
     <MonthlyLevel {principleInterest} {insurance} {tax} {hoa} />
   </div>
   <div class="py-6 md:px-10 bg-white rounded-lg shadow-md">

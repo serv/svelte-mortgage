@@ -69,7 +69,7 @@
 </script>
 
 <div class="flex">
-  <div class="w-80 md:mr-8 lg:mx-24">
+  <div class="w-80 md:mr-8 lg:mx-24 hidden md:flex">
     <MonthlyBreakdownPieChartWrapper
       arcs={getArcs()}
       text={total}
