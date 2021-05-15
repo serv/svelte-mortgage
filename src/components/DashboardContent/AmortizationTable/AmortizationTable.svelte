@@ -1,6 +1,6 @@
 <script lang="ts">
   import ParseHelper from '../../../utils/parse-helper';
-  import * as dayjs from 'dayjs';
+  import dayjs from 'dayjs';
 
   export let loan;
   export let startMonth;
