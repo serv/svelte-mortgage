@@ -5,5 +5,7 @@
 <Dashboard />
 
 <style global>
-  @import './globals.css';
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 </style>
