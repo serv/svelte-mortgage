@@ -7,7 +7,7 @@
   import DownPayment from '../DownPayment';
   import { currentId, history } from '../../services/stores';
   import Mortgage from '../../models/Mortgage';
-  import * as dayjs from 'dayjs';
+  import dayjs from 'dayjs';
   import amortize from 'amortizationjs';
   import { round } from 'lodash-es';
 
