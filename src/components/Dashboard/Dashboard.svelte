@@ -100,6 +100,18 @@
           <History />
         </div>
       </div>
+
+      <div class="grid justify-items-center text-xs">
+        <div>
+          <a href="https://github.com/serv/svelte-mortgage" target="_blank"
+            >Github</a
+          >
+        </div>
+        <div class="">
+          Created by
+          <a href="https://twitter.com/jasoki" target="_blank">@jasoki</a>
+        </div>
+      </div>
     </div>
   {/if}
 

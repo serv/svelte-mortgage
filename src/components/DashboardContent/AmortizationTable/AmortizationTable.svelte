@@ -16,7 +16,7 @@
   }
 </script>
 
-<div class="h-96 overflow-auto">
+<div class="h-96 overflow-y-auto overflow-x-auto md:overflow-x-hidden">
   <table class="table-auto w-full">
     <thead>
       <tr>
