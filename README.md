@@ -50,6 +50,8 @@ Here are some ideas for contributing to the project.
 - Suggest new features
 - Improve typescript code
 
+There's a separate NPM module for calculating mortgage, [amortizationjs](https://github.com/serv/amortizationjs).
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
