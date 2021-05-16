@@ -6,6 +6,7 @@
   import { currentHistory } from '../../services/stores';
   import amortize from 'amortizationjs';
   const {
+    appName,
     defaultHomePrice,
     defaultDownPaymentPercentage,
     defaultInterestRate,
@@ -75,7 +76,7 @@
       <div class="flex items-center justify-center mt-8">
         <div class="flex items-center flex-col">
           <span class="text-gray-800 dark:text-white text-2xl font-semibold">
-            MortageHero
+            {appName}
           </span>
 
           <div class="mb-8">
@@ -97,6 +98,18 @@
 
           <span class="text-gray-600 text-xl mb-4">Previously Generated</span>
           <History />
+        </div>
+      </div>
+
+      <div class="grid justify-items-center text-xs">
+        <div>
+          <a href="https://github.com/serv/svelte-mortgage" target="_blank"
+            >Github</a
+          >
+        </div>
+        <div class="">
+          Created by
+          <a href="https://twitter.com/jasoki" target="_blank">@jasoki</a>
         </div>
       </div>
     </div>

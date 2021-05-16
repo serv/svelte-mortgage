@@ -1,4 +1,5 @@
 export default {
+  appName: 'Mortgage Calculator',
   defaultHomePrice: 345_000,
   defaultDownPaymentPercentage: 20,
   defaultInterestRate: 4.5,
